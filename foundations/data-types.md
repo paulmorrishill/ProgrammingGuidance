@@ -231,4 +231,4 @@ and the differences decide how much care each rule needs.
 
 - [Ids]({{ '/foundations/ids' | relative_url }}) — why an id is text, not a number
 - [Client and server]({{ '/foundations/client-and-server' | relative_url }}) — why outside data is never what it claims
-- Databases and tables
+- [Technical debt]({{ '/foundations/technical-debt' | relative_url }}) — why a wrong type becomes permanent once data exists

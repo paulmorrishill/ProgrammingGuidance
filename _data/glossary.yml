@@ -798,3 +798,25 @@
 - term: supply chain attack
   short: An attack that reaches you through code you installed, rather than through your own code.
   group: Security and access
+
+- term: technical debt
+  short: The extra work every future change costs, caused by decisions already taken.
+  url: /foundations/technical-debt/
+  group: Working with code
+
+- term: data corruption
+  short: Wrong values stored in your database. Fixing the code does not repair what is already written.
+  url: /foundations/technical-debt/
+  group: Data
+
+- term: backfill
+  aliases: [backfilling, backfilled]
+  short: Filling a new field for rows that already exist, after adding it.
+  url: /foundations/technical-debt/
+  group: Data
+
+- term: silent failure
+  aliases: [silent failures]
+  short: A failure the program hides, so it continues with a wrong value and reports nothing.
+  url: /foundations/technical-debt/
+  group: Running and watching

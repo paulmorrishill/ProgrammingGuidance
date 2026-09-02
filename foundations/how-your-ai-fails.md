@@ -110,6 +110,26 @@ finding.
 **What to do.** Before accepting a new helper, search for the one you already have.
 Ask directly: "does this repository already do this somewhere?"
 
+## It hides failures by default
+
+The model keeps the program running. It wraps a call in a catch and logs the error. It
+returns an empty list when a lookup finds nothing. It supplies a default when a field
+is missing. It retries, quietly, forever.
+
+Every one of those converts a failure that would have stopped into a program that
+carries on with a wrong value. The wrong value then gets written down, passed to
+another service, and shown to a customer, hours away from the line that caused it.
+
+This is the default, not an occasional lapse. Code that runs looks more finished than
+code that raises an error, and looking finished is what the model optimises.
+
+A failure that stops gives you a stack trace pointing at its cause. A failure that
+continues gives you wrong data and nothing pointing anywhere.
+
+**What to do.** Catch an error only where you can genuinely do something about it, and
+let the rest stop. When a diff adds a catch, a default value, or an empty return, ask
+what it is hiding. Treat "it no longer errors" as a question rather than an answer.
+
 ## It will cut a corner to finish
 
 Reaching the stated goal outranks everything unstated. So it will widen a permission,
@@ -253,6 +273,7 @@ feeling of speed is not a measurement of speed.
 - **Accepting a change you cannot explain.** You now maintain code nobody understands.
 - **Letting forty small changes decide your architecture.** Nobody chose the result.
 - **Reading a diff for what was added.** The damage is usually in what was removed.
+- **Accepting a catch that only logs.** The failure still happened, and now nothing stops.
 - **Pasting a whole repository in.** The middle of a long input is used least.
 - **Treating fluent output as checked output.** Fluency is the one thing it guarantees.
 - **Saying "still broken" with no new detail.** You get a different guess, not a better one.
@@ -269,3 +290,4 @@ feeling of speed is not a measurement of speed.
 ## Next
 
 - [Variables and values]({{ '/foundations/variables-and-values' | relative_url }}) — the first thing you need in order to read what it wrote
+- [Technical debt]({{ '/foundations/technical-debt' | relative_url }}) — what these failures cost once they accumulate

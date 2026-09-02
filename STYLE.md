@@ -226,6 +226,24 @@ did not, because nobody believed it was, and the sentence existed for its cadenc
 Test it by asking who holds the wrong belief. If the answer is nobody, the sentence is
 an invented opponent. Delete it and state the fact.
 
+### The lint, and why one exists
+
+The shapes above are checked by `script/check-content.rb`, and a match fails the build.
+
+They are checked rather than remembered because a written prohibition is weak against
+the thing it prohibits. Research on negation finds models follow banned instructions
+poorly, and one audit measured open-weight models carrying out specifically forbidden
+instructions 77% of the time under a simple "do not", rising to 100% when the
+prohibition had a condition attached. Reading "never write X" is still reading X.
+
+Padding has a second source. Reward models trained on human preferences favour longer
+answers, because the people who rated them did. Filler is not an accident of the
+tool, it is a trained preference, so it returns whenever attention drops.
+
+A deterministic check does not get tired and does not need reminding. When a new shape
+appears, add the pattern rather than adding a sentence to this guide. Add one only
+after checking it against every page and finding no legitimate use.
+
 ### Other shapes to delete
 
 - **Restatement for emphasis.** The second sentence repeats the first in stronger

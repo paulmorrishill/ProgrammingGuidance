@@ -129,6 +129,48 @@ pages.each do |path|
   end
 end
 
+# ---------------------------------------------------------------- prose lint
+
+# Rules in a style guide decay. A prohibition decays faster than most, because a
+# model that reads "never write X" has still read X, and research on negation finds
+# banned instructions followed poorly. So the shapes that keep coming back are checked
+# here instead of trusted to memory.
+#
+# Every pattern below is high precision. Add one only after checking it against the
+# whole site and finding no legitimate use.
+BANNED_PROSE = [
+  [/it (is|'s) important to (note|remember|understand)/i, "filler opener"],
+  [/(it is|it's) worth noting/i, "filler opener"],
+  [/\bin other words\b/i, "restatement of the previous sentence"],
+  [/to put it (simply|another way)/i, "restatement of the previous sentence"],
+  [/\bmake no mistake\b/i, "emphasis carrying no information"],
+  [/let me be clear/i, "emphasis carrying no information"],
+  [/(\A|[.!?]\s)at the end of the day,/i, "filler opener"],
+  [/\bthe truth is\b/i, "filler opener"],
+  [/\bnot (folklore|hyperbole|an exaggeration|a coincidence|marketing)\b/i,
+   "insisting the claim is real instead of stating it"],
+  [/\bis not [a-z ]{1,25}, it is\b/i, "contrast used as rhythm"],
+  [/\b(not just|isn't just|is not just|more than just)\b/i, "contrast used as rhythm"],
+  [/this is the difference between/i, "verdict line"],
+  [/\b(seamless|blazing[- ]fast|cutting[- ]edge|game[- ]changing|effortless)\b/i,
+   "marketing adjective"],
+  [/\b(delve|tapestry|leverage)\b/i, "word nobody says"],
+].freeze
+
+pages.each do |path|
+  rel = path.sub(ROOT + File::SEPARATOR, "").tr("\\", "/")
+  raw = File.read(path)
+  body = raw.sub(/\A---\s*\n.*?\n---\s*\n/m, "")
+  prose_only = prose_of(body)
+
+  prose_only.each_line.with_index(1) do |line, n|
+    BANNED_PROSE.each do |pattern, why|
+      next unless (hit = line[pattern])
+      fail!(failures, rel, "line #{n}: #{hit.strip.inspect} is #{why}. Delete it or state the fact.")
+    end
+  end
+end
+
 # ---------------------------------------------------------------- sequence
 
 # A reader works through the pages in order, so a page may only depend on pages

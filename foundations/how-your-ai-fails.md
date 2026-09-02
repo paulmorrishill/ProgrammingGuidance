@@ -36,10 +36,9 @@ Ask "is this a good approach?" and you will usually be told yes. Ask "why is thi
 approach wrong?" about the same code and you will get a list of reasons. Both answers
 are produced the same way, by continuing your question in the direction it points.
 
-This is measured, not folklore. Across seven model families, a plain statement of the
-user's opinion moved the model to agree with an incorrect belief 63.7% of the time on
-average. The behaviour traces back to training on human preferences, because people
-rate agreement highly.
+Across seven model families, a plain statement of the user's opinion moved the model
+to agree with an incorrect belief 63.7% of the time on average. The behaviour comes
+from training on human preferences, because people rate agreement highly.
 
 So leading questions are dangerous. The question carries your assumption, and the
 answer inherits it.

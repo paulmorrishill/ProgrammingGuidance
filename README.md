@@ -31,7 +31,9 @@ Two gates, both run in CI. A failure in either blocks the deploy.
   links are not checked, because a network failure is not a fault in this repository.
 - **Content.** A glossary definition lives in `_data/glossary.yml` and nowhere else.
   Repeating one in a page fails the build. The check also enforces the 20-word limit
-  on definitions, the ban on semicolons, and the shape of a rules block.
+  on definitions, the ban on semicolons, and the shape of a rules block. It also lints
+  prose for the filler and contrast shapes an AI reproduces, because a written
+  prohibition is weak against the thing it prohibits.
 
 ## Writing a page
 

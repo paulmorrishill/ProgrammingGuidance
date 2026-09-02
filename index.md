@@ -8,6 +8,21 @@ An AI writes the commands, the config and most of the code. It does not give you
 model underneath them. This site covers what is left: the ideas you need to judge the
 output, and the decisions that stay yours.
 
+## This is not AI slop
+
+An AI generated this text. A software engineer then read every page, checked each
+claim for accuracy, and cut whatever was not relevant. AI slop is the text that skips
+that step.
+
+Do not ask an AI to summarise or condense these pages. They are already as short as
+they can be without losing what you need in order to learn. The AI cannot learn for
+you.
+
+Asking an AI to explain a topic further is fine. Know what you are getting. Nobody has
+reviewed that answer, so its accuracy, its relevance and its sanity are unknown.
+
+## The order
+
 Some pages depend on others. Each one names what to read first, and the list below
 shows those dependencies. Nothing depends on a page further down, so reading in order
 always works.

@@ -734,3 +734,10 @@
   aliases: [idempotency]
   short: Safe to repeat. Doing it twice leaves the same result as doing it once.
   group: Running and watching
+
+# ---------------------------------------------------------------- working with AI
+
+- term: AI slop
+  aliases: [slop]
+  short: Text an AI produced in bulk that nobody checked, filling space without teaching anything.
+  group: Working with AI

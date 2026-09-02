@@ -8,7 +8,9 @@ An AI writes the commands, the config and most of the code. It does not give you
 model underneath them. This site covers what is left: the ideas you need to judge the
 output, and the decisions that stay yours.
 
-Read the pages in order. Each one assumes only the pages before it, and nothing else.
+Some pages depend on others. Each one names what to read first, and the list below
+shows those dependencies. Nothing depends on a page further down, so reading in order
+always works.
 
 {% assign sequence = site.pages | where_exp: "p", "p.slug" %}
 

@@ -351,9 +351,15 @@
   url: /foundations/data-types/
   group: Data
 
-- term: decimal
-  aliases: [floating point, float, floats]
-  short: A number that can hold fractions, but only approximately. Never use it for money.
+- term: floating point number
+  aliases: [floating point, float, floats, floating point numbers]
+  short: A number stored as a binary fraction. It cannot hold most decimal fractions exactly, so it is wrong for money.
+  url: /foundations/data-types/
+  group: Data
+
+- term: exact decimal
+  aliases: [decimal type]
+  short: A number type storing base ten digits exactly. Some languages have one, and it is safe for money.
   url: /foundations/data-types/
   group: Data
 

@@ -16,7 +16,34 @@ Severity:
 
 ---
 
-## 1. Undefined jargon
+## 1. Factual accuracy
+
+*Origin: the JavaScript entry called a number "a decimal". It is a binary floating
+point number. "Decimal" names a different, exact type that some other languages have,
+and the C# entry on the same page used the word in that opposite sense.*
+
+**A simplification that makes the statement false is not a simplification.** Plain
+language is required. Being wrong is not the price of it.
+
+Check every technical claim on the page:
+
+- Is it true as written, not merely true in spirit?
+- Does a named type, format or standard actually behave that way?
+- Does a word carry a different technical meaning elsewhere on the site, or in a
+  language the reader may use? Flag anything that would mislead a reader who later
+  meets the other meaning.
+- Are version-dependent claims still true, and dated where they change?
+- Do numbers, limits and examples hold up? Check them, do not assume.
+
+Pay particular attention to the per-language accordions. They make specific claims
+about specific systems, and a wrong one is worse than an absent one, because the
+reader has no reason to doubt it.
+
+When accuracy and simplicity genuinely conflict, keep accuracy and spend an extra
+sentence. Naming a thing correctly and then explaining it costs one clause. Naming it
+wrongly costs the reader every time they meet the real meaning.
+
+## 2. Undefined jargon
 
 *Origin: the reader hit `id` with no explanation, then `values`, `form`, `decimals`,
 `UTC` and `displaying`.*
@@ -34,7 +61,7 @@ A definition that leans on two more undefined terms has failed. Flag that too.
 
 **Do not accept "it is obvious".** The audience floor is zero knowledge.
 
-## 2. Assumed knowledge and sequence
+## 3. Assumed knowledge and sequence
 
 *Origin: "the types page needs a variables page first so that they even know what we
 are talking about".*
@@ -50,7 +77,7 @@ Flag:
 
 If the missing prerequisite is not yet a page, say which page needs writing.
 
-## 3. Mechanical content
+## 4. Mechanical content
 
 *Origin: "we don't need mechanical steps that AI can do, e.g. do not put the raw git
 commands in there as the AI will know how to do those".*
@@ -68,7 +95,7 @@ AI, cut it. Keep it only when a wrong answer costs money, data or a security bre
 Naming a command because the name *is* the concept is allowed. "A commit is one
 checkpoint" stays. The syntax does not.
 
-## 4. Diagrams
+## 5. Diagrams
 
 *Origin: "we need diagrams and stuff".*
 
@@ -82,7 +109,7 @@ Flag:
 - A diagram with no caption saying what to notice.
 - A fact that exists only in the diagram and not in the surrounding text.
 
-## 5. Rules block
+## 6. Rules block
 
 *Origin: "key alert style rules at the top for key stuff like NEVER: commit secrets".*
 
@@ -96,7 +123,7 @@ The block sits directly under the definition. Flag:
   place by naming what goes wrong.
 - A rule over 15 words, or one that is not imperative.
 
-## 6. Simplified Technical English
+## 7. Simplified Technical English
 
 *Origin: the style guide adopts ASD-STE100 in STE-flavored mode.*
 
@@ -110,7 +137,7 @@ Flag, quoting the sentence:
 - A hedge promoted to a fact, or a fact softened into a hedge.
 - Synonym rotation. One thing must keep one name across the page.
 
-## 7. Per-language variation
+## 8. Per-language variation
 
 *Origin: "on types we could be talking about so many different systems, we need an
 accordion where there is large variation".*
@@ -125,7 +152,7 @@ Flag:
   the accordion is noise and should go.
 - An entry that teaches the language rather than naming the difference.
 
-## 8. Page shape
+## 9. Page shape
 
 *Origin: the style guide fixes the order.*
 
@@ -136,7 +163,7 @@ Flag a page that opens with a preamble instead of the definition, a section padd
 because the template listed it, or a missing "what you decide" on a page where real
 judgment exists.
 
-## 9. Honesty about the reader's job
+## 10. Honesty about the reader's job
 
 *Origin: the site's premise. The AI writes the code, so the page must carry what the
 AI cannot decide.*

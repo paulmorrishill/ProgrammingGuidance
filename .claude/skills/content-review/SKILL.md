@@ -57,14 +57,19 @@ Give each subagent this prompt, with `<PAGE>` replaced:
 > Also read every page listed in the page's `requires` front matter, because the
 > reader has read those and nothing later.
 >
-> Work through all nine rubric sections in order. For each finding report:
+> Work through all ten rubric sections in order. For each finding report:
 > - the rubric section number and name
 > - severity: blocker, major or minor
 > - the exact quoted text, with its line number
 > - why it fails, in one sentence
 > - a concrete replacement, not a description of one
 >
-> For section 1, list every undefined term separately, and say for each whether it
+> Section 1 is factual accuracy and it matters most. Verify every technical claim
+> rather than assuming it, especially inside the per-language accordions. A confident
+> wrong claim is worse than a missing one, because the reader has no reason to doubt
+> it. Report a false claim as a blocker.
+>
+> For section 2, list every undefined term separately, and say for each whether it
 > belongs in the glossary or in the page's prose.
 >
 > Be specific and be hard to please. A review that finds nothing on a first draft is

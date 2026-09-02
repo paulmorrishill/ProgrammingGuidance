@@ -8,14 +8,15 @@ order: 2
 requires: [variables-and-values]
 ---
 
-A data type is the kind of a value. Text, a whole number, a decimal, true or false, a
-date, a list. The kind decides what the computer does when you use the value.
+A data type is the kind of a value. Text, a whole number, a floating point number,
+true or false, a date, a list. The kind decides what the computer does when you use
+the value.
 
 Two values can look identical on screen and behave completely differently. This is
 the source of a whole family of bugs that produce no error message at all.
 
 {: .rules}
-- **NEVER** store money as a decimal fraction. Store whole pence or cents.
+- **NEVER** store money in a floating point number. Store whole pence or cents.
 - **NEVER** store a date without knowing its time zone. Store UTC.
 - **NEVER** treat a phone number, postcode or reference as a number.
 - **ALWAYS** convert text to a number before doing arithmetic with it.
@@ -55,7 +56,7 @@ you meant, and if you do not choose where, the language chooses for you.
 |---|---|---|---|
 | Text | Characters | Names, addresses, phone numbers, postcodes, ids | Arithmetic |
 | Whole number | Counts with no fraction | Quantities, money in pence, positions | Anything needing a half |
-| Decimal | Fractions, approximately | Measurements, averages, percentages | Money |
+| Floating point | Fractions, approximately | Measurements, averages, percentages | Money |
 | True or false | One of two states | A setting that is on or off | Anything with a third state |
 | Date and time | One instant | When something happened | A duration, or a birthday |
 | List | Many values in order | Search results, line items | One value |
@@ -63,15 +64,18 @@ you meant, and if you do not choose where, the language chooses for you.
 
 ## Money
 
-A decimal cannot hold most fractions exactly. It holds the nearest value it can, and
-the error is small. Add a thousand of those errors and the total no longer matches the
+A floating point number stores a value in binary, not in base ten. Most decimal
+fractions have no exact binary form, so `0.1` is kept as the nearest value the format
+can hold. That error is tiny. Add a thousand of them and the total stops matching the
 sum of its parts. Your accounts disagree by a penny and nobody can find why.
 
-Store money as a whole number of the smallest unit. £12.34 is stored as `1234`. Divide
-by 100 only when you show it to a person.
+Some languages offer an exact decimal type, which stores base ten digits and is safe
+for money. Use it where it exists. Where none exists, store money as a whole number of
+the smallest unit. £12.34 is stored as `1234`. Divide by 100 only when you show it to
+a person.
 
 This is not a preference. Currency and rounding rules are legal requirements in many
-places, and a decimal fraction cannot satisfy them.
+places, and a floating point number cannot satisfy them.
 
 ## Dates and time zones
 
@@ -130,9 +134,11 @@ and the differences decide how much care each rule needs.
 <details markdown="1">
 <summary>JavaScript and TypeScript</summary>
 
-- **One number type, and it is a decimal.** There is no whole number type. Every
-  number is the kind that cannot hold fractions exactly, so `0.1 + 0.2` is wrong here.
-  Hold money as a whole number of pence and never divide until you display it.
+- **One ordinary number type, and it is floating point.** Every plain number is a
+  64-bit binary floating point value, so `0.1 + 0.2` does not give `0.3`. `BigInt`
+  holds whole numbers exactly, but it is a separate type and does not mix with
+  ordinary numbers. There is no exact decimal type, so hold money as a whole number
+  of pence.
 - **Two kinds of nothing.** `null` means set to nothing. `undefined` means never set.
   They behave differently and both appear in real data.
 - **Values change kind on their own.** `"5" + 1` joins text. `"5" - 1` does arithmetic.
@@ -149,8 +155,8 @@ and the differences decide how much care each rule needs.
 <summary>Python</summary>
 
 - **Whole numbers are unlimited.** They never overflow, so counting is safe.
-- **`float` is the inexact decimal.** For money use the `Decimal` type from the
-  standard library, or whole pence as an `int`.
+- **`float` is a binary floating point number**, so it is inexact. For money use
+  `Decimal` from the standard library, which is exact, or whole pence in an `int`.
 - **One kind of nothing.** `None`, which is simpler than most languages.
 - **Type hints are not enforced.** The program runs whatever it is given. Use Pydantic
   when data arrives from outside.
@@ -162,8 +168,8 @@ and the differences decide how much care each rule needs.
 <details markdown="1">
 <summary>C#</summary>
 
-- **`decimal` is genuinely exact for money.** Unlike most languages, C# has a base ten
-  decimal type built for currency. Use `decimal` for money and `double` for
+- **`decimal` is an exact base ten type.** Unlike most languages, C# ships one built
+  for currency. Use `decimal` for money and `double`, which is floating point, for
   measurements. Never the other way round.
 - **Kinds are checked before the program runs**, so many of the mistakes above are
   caught at compile time.
@@ -177,8 +183,8 @@ and the differences decide how much care each rule needs.
 <details markdown="1">
 <summary>Java</summary>
 
-- **`BigDecimal` for money.** `double` and `float` are the inexact kinds. Whole pence
-  in a `long` also works and is faster.
+- **`BigDecimal` for money.** `double` and `float` are binary floating point, so they
+  are inexact. Whole pence in a `long` also works and is faster.
 - **Whole numbers do overflow.** An `int` stops at about 2.1 billion and wraps around
   to a negative number with no error. Use `long` for anything that counts upward.
 - **`null` and the exception it causes** are the most common failure. `Optional` makes
@@ -196,7 +202,7 @@ and the differences decide how much care each rule needs.
 - **Turn on strict types.** `declare(strict_types=1)` at the top of each file stops
   silent conversion at function boundaries.
 - **No exact decimal type.** Use whole pence in an integer, or the BCMath extension.
-  Never a plain float for money.
+  Never a floating point number for money.
 - **`DateTimeImmutable`, not `DateTime`.** The mutable one is changed by the code you
   pass it to, which causes bugs far from the cause.
 
@@ -216,7 +222,7 @@ and the differences decide how much care each rule needs.
 ## Common mistakes
 
 - **Doing arithmetic on values from a form.** They are text until you convert them.
-- **Storing prices as decimals.** Use whole pence.
+- **Storing prices in floating point numbers.** Use whole pence, or an exact decimal type where the language has one.
 - **Storing local time.** Store UTC and convert when displaying.
 - **Allowing null everywhere by default.** Every later line must then handle it.
 - **Trusting a declared type for outside data.** The declaration checks your code, not the world.

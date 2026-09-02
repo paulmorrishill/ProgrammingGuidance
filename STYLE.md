@@ -302,6 +302,22 @@ Mermaid cannot express the idea. Never use a screenshot or an image of text.
 - Do not soften a warning to sound friendly.
 - Give the version or the date for anything that changes.
 
+### Never simplify into a falsehood
+
+Plain language is required. Being wrong is not the price of it. A simplification that
+makes the statement false is not a simplification, it is an error the reader cannot
+detect.
+
+A JavaScript number was described here as "a decimal". It is a binary floating point
+number, and "decimal" names a different, exact type that other languages have. The
+same page used "decimal" in that opposite sense one section later. A reader who
+learned the wrong word had to unlearn it the first time they met the right one.
+
+- Use the correct name, then explain it. That costs one clause.
+- Never reuse a word that carries a different technical meaning elsewhere.
+- Check a claim about a named type, format or standard. Do not write it from memory.
+- Where accuracy and brevity conflict, keep accuracy and spend the extra sentence.
+
 ## Tone
 
 Flat and direct. No jokes about how confusing the topic is. No apology for the

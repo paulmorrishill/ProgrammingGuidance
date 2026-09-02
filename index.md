@@ -15,6 +15,7 @@ Three tiers, from the ground up.
 The ideas under the tools you already use.
 
 - [What is Git]({{ '/foundations/what-is-git' | relative_url }})
+- [What is a secret]({{ '/foundations/what-is-a-secret' | relative_url }})
 
 ## Building
 

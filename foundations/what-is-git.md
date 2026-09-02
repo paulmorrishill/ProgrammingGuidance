@@ -170,6 +170,7 @@ Your AI handles the mechanics. These four calls stay with you:
 
 ## Next
 
+- [What is a secret]({{ '/foundations/what-is-a-secret' | relative_url }}) — why a committed key is already public
 - What is a pull request
 - Branching for one person and for a team
 - What is recoverable, and what is not

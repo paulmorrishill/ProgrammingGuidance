@@ -1,0 +1,14 @@
+title: Programming Guidance
+description: Foundations, building and shipping guidance for people who write code with AI help.
+url: https://paulmorrishill.github.io
+baseurl: /ProgrammingGuidance
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+
+exclude:
+  - README.md
+  - STYLE.md

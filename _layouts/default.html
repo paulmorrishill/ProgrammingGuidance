@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description }}">
+<link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+<header>
+  <a class="home" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+</header>
+
+<main>
+  {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
+  {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+  {{ content }}
+</main>
+
+<footer>
+  <a href="https://github.com/paulmorrishill/ProgrammingGuidance">Source on GitHub</a>
+</footer>
+
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+
+// Rouge wraps fenced blocks differently depending on the highlighter path,
+// so match the language class wherever it lands and replace the whole block.
+document.querySelectorAll('.language-mermaid').forEach((el) => {
+  const codeEl = el.matches('code') ? el : el.querySelector('code');
+  const source = (codeEl || el).textContent;
+  const block = el.closest('div.highlighter-rouge') || el.closest('pre') || el;
+  const figure = document.createElement('div');
+  figure.className = 'mermaid';
+  figure.textContent = source;
+  block.replaceWith(figure);
+});
+
+const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+mermaid.initialize({
+  startOnLoad: true,
+  securityLevel: 'strict',
+  theme: dark ? 'dark' : 'default',
+  themeVariables: { fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' },
+});
+</script>
+</body>
+</html>

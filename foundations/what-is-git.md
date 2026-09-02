@@ -1,7 +1,14 @@
-# What is Git
+---
+layout: default
+title: What is Git
+summary: The history of your project, and the four decisions only you can make about it.
+---
 
-Git records the history of your project. Each time you save a checkpoint, Git stores
-the state of every tracked file. You can return to any checkpoint later.
+Git records the history of your project. Each checkpoint stores the state of every
+tracked file, so you can return to any earlier point.
+
+Your AI runs the commands. You need the model underneath them, because Git is the
+one tool that decides whether a mistake costs you five seconds or a week.
 
 ## The problem
 
@@ -9,141 +16,131 @@ Without Git you meet these four failures:
 
 - You copy the folder to `project-final`, then `project-final-2`, then `project-final-REAL`.
 - You delete code that worked and cannot recover it.
-- Two people edit one file and one edit overwrites the other.
+- Two people edit one file, and one edit overwrites the other.
 - The app breaks and you cannot tell which change broke it.
 
-Git solves all four.
+Git solves all four. It solves none of them for work you never committed.
 
 ## Git is not GitHub
 
 Git is a program on your computer. It works with no internet connection.
 
-GitHub is a website that stores copies of Git repositories. GitLab, Bitbucket and
+GitHub is a website that stores a copy of a Git repository. GitLab, Bitbucket and
 Codeberg do the same job.
+
+```mermaid
+flowchart LR
+    L["Your machine<br/>complete history"] -- "you send commits" --> R["GitHub<br/>complete history"]
+    R -- "you request commits" --> L
+```
+
+Both copies hold the whole history. Nothing moves between them until you ask.
 
 You can use Git without GitHub. You cannot use GitHub without Git.
 
 ## Mental model
 
-A repository is your project folder plus a hidden `.git` folder inside it.
+A repository is your project folder plus a hidden `.git` folder inside it. `.git`
+holds every checkpoint you ever made. Delete `.git` and the history disappears. Your
+current files stay.
 
-`.git` holds every checkpoint you ever made. Delete `.git` and you delete the
-history. Your current files stay. Everything before now disappears.
+A commit is one checkpoint. It holds a snapshot of every tracked file, your message,
+the author, the time, and a link to the commit before it.
 
-A commit is one checkpoint. It stores four things:
+```mermaid
+flowchart LR
+    A["Commit 1<br/>first version"] --> B["Commit 2<br/>add login"] --> C["Commit 3<br/>fix redirect"]
+    M(["main"]) -. "points at" .-> C
+```
 
-- A snapshot of every tracked file
-- The message you wrote
-- The author and the time
-- A link to the commit before it
+Each commit links to the one before it. That chain is the history. A branch name is
+only a label that points at one commit.
 
-Those links form a chain from the first commit to the newest. The chain is the history.
+## Why a commit is not a save
 
-## The three places a change lives
+Git puts a step between editing and history. You edited 5 files. Only 2 belong to
+the bug fix. You choose those 2, and they become one commit. The other 3 wait.
 
-Git adds a step between editing and committing. New users find this step confusing.
-Its purpose is to let you choose what goes into the next commit.
+```mermaid
+flowchart LR
+    W["Files you edited"] -- "you choose which" --> S["Selected changes"] -- "become one commit" --> H["History"]
+```
 
-1. **Working directory** — the files you edit.
-2. **Staging area** — the changes you marked for the next commit. Use `git add`.
-3. **Repository** — the committed history. Use `git commit`.
+The selection step exists so a commit can mean one thing.
 
-Example: you edited 5 files, but only 2 belong to the bug fix. Stage those 2 and
-commit them. The other 3 wait for a separate commit.
+That choice is yours, not the AI's. A commit that means one thing can be reversed on
+its own. A commit holding a day of unrelated work cannot.
 
-## Branch
+## Branches
 
-A branch is a label that points at one commit. That is the whole idea.
+A branch is a label that points at a commit. Creating one costs almost nothing.
 
-`main` is the default branch name. Create a branch to try a change without touching
-`main`. Merge the branch when the change works. Delete the branch when it does not.
-A branch costs almost nothing.
+```mermaid
+gitGraph
+    commit id: "Add login"
+    commit id: "Fix redirect"
+    branch dark-mode
+    commit id: "Add toggle"
+    checkout main
+    commit id: "Update README"
+    merge dark-mode
+```
 
-## Remote
+Work on `dark-mode` continues while `main` keeps moving. The merge joins them.
 
-A remote is a copy of the repository on another machine, usually GitHub. The default
-remote name is `origin`.
-
-| Command | What it does |
-|---|---|
-| `git clone` | Copies a remote repository to your machine, one time |
-| `git push` | Sends your commits to the remote |
-| `git fetch` | Downloads remote commits, changes no files |
-| `git pull` | Downloads remote commits and merges them into your branch |
-
-Your copy and the remote can differ. Git never syncs on its own. You run the command.
+Use a branch when the change might fail. Delete the branch and the failure leaves no
+trace on `main`.
 
 ## Merge conflicts
 
-Two commits change the same lines. Git cannot choose between them, so it writes both
-versions into the file:
+Two commits change the same lines. Git cannot judge which version is correct, so it
+writes both into the file and stops:
 
 ```text
 <<<<<<< HEAD
 your version of the line
 =======
 their version of the line
->>>>>>> feature-branch
+>>>>>>> dark-mode
 ```
 
-To resolve it:
+Nothing is lost and nothing is broken. Git is asking you a question, because the
+answer needs knowledge of what the code is for. Your AI can edit the file. It cannot
+know which of two working versions you meant to keep.
 
-1. Open the file.
-2. Keep the correct code and delete the rest.
-3. Delete the three marker lines.
-4. Run `git add <file>`, then `git commit`.
-
-Nothing is lost and nothing is broken. Git is asking you a question.
-
-## .gitignore
-
-`.gitignore` lists the paths Git must not track. Every project needs one.
-
-Never commit:
-
-- `node_modules/` — large, and you can reinstall it
-- `.env` — secrets
-- `dist/` or `build/` — generated output
-- `.DS_Store` — operating system junk
+## What must never enter the history
 
 A secret committed once stays in the history forever. A later commit that deletes the
-file does not remove it from the history. You must rotate the key.
+file does not remove it. Anyone who clones the repository reads it.
 
-## Do this
+If a key reaches a commit, treat the key as public and replace it. Deleting the file
+is not enough.
 
-```bash
-git status            # what changed, and what is staged
-git add .             # stage every change
-git commit -m "Fix login redirect on expired session"
-git log --oneline     # list commits, newest first
-git diff              # show unstaged changes
-git push              # send commits to the remote
-git pull              # bring remote commits into your branch
-```
+Keep these out: environment files holding secrets, installed dependency folders,
+generated build output, and operating system junk files. The `.gitignore` file lists
+what Git must not track.
 
-## Undo
+## What you decide
 
-| Situation | Command | Note |
-|---|---|---|
-| Discard an edit to a file | `git restore file.txt` | Destroys uncommitted work |
-| Unstage a file | `git restore --staged file.txt` | Safe |
-| Reverse a pushed commit | `git revert <hash>` | Safe, creates a new commit |
-| Move the branch back, keep files | `git reset --soft <hash>` | Rewrites history |
-| Find a commit you lost | `git reflog` | Safe, shows commits `git log` hides |
+Your AI handles the mechanics. These four calls stay with you:
 
-`git reflog` recovers most lost commits for about 90 days. Commit often and you lose
-almost nothing.
+| Decision | Why it is yours |
+|---|---|
+| What one commit contains | Only you know which changes belong to one idea |
+| What the message says | In six months the message is the only explanation left |
+| Whether to rewrite shared history | A force push deletes commits other people made |
+| What never gets committed | The AI cannot tell a secret from a config value |
 
 ## Common mistakes
 
 - **Messages like "update", "fix", "asdf".** In six months they tell you nothing.
-- **One commit per day.** You cannot reverse one part of a large commit.
-- **Committing `.env`.** The key is now public. Rotate it.
-- **`git push --force` on a shared branch.** It deletes commits other people pushed.
-- **Waiting until the work is finished.** Commit each working state as you reach it.
+- **One commit at the end of the day.** You cannot reverse one part of it.
+- **Committing a secrets file.** The key is now public. Replace it.
+- **Force pushing a shared branch.** It deletes commits other people pushed.
+- **Waiting until the work is finished.** Uncommitted work has no history to recover.
 
 ## Next
 
 - What is a pull request
 - Branching for one person and for a team
-- Reading `git log` and `git diff`
+- What is recoverable, and what is not

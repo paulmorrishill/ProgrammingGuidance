@@ -71,6 +71,32 @@ Prefer:
 Compression is not the goal. Clarity is. Stop when the sentence has one meaning,
 not when it is shortest.
 
+## Scope: concepts, not keystrokes
+
+An AI writes the commands. The reader does not need them. Teach the model, the
+vocabulary and the decisions instead.
+
+Do not write:
+
+- Command lists, flag reference or click paths
+- Step-by-step procedures the AI performs on request
+- Installation instructions
+- Anything the reader gets faster by asking their AI
+
+Do write:
+
+- What the thing is, and why it exists
+- The mental model the reader needs to judge the AI's output
+- The decision only a human makes
+- The consequence the reader owns: what is irreversible, what leaks, what costs money
+- The vocabulary needed to ask a precise question
+
+Name a command only when the name is the concept. "A commit is one checkpoint" is
+the concept. The full syntax is not.
+
+**Test:** if the reader reaches the same result by asking their AI, cut it. If a
+wrong answer costs them money, data or a security breach, keep it.
+
 ## Page shape
 
 Every topic page uses this order:
@@ -80,7 +106,7 @@ Every topic page uses this order:
 3. **The problem** — the concrete failure this thing prevents.
 4. **Mental model** — one picture the reader can hold.
 5. **The parts** — named concepts, one short block each.
-6. **Do this** — the smallest set of commands or steps that works.
+6. **What you decide** — the judgment the AI cannot make for you.
 7. **Common mistakes** — real failures, not theory.
 8. **Next** — 2 or 3 links.
 
@@ -97,10 +123,33 @@ After the definition, use the term. Do not explain it again.
 
 ## Code
 
+A code block shows a thing the reader must recognize, or a failure they must
+understand. It is not a procedure to copy.
+
 - Tag every code block with its language.
+- Show what the reader will see on screen, not what they should type.
 - Comments explain why, not what.
-- Show the output when the output matters.
 - Use real code, not pseudocode.
+
+## Diagrams
+
+Use a diagram when the idea has a shape: a sequence, a hierarchy, two things that
+differ, or state that changes. Do not draw a list.
+
+**Format.** Write diagrams as Mermaid inside a fenced `mermaid` block. Mermaid is
+text, so it lives in version control and shows a readable diff. It renders on the
+site and in the GitHub repository view. Use hand-written inline SVG only when
+Mermaid cannot express the idea. Never use a screenshot or an image of text.
+
+**Rules.**
+
+- One idea per diagram. Split it when it needs more.
+- Maximum 7 nodes. A larger diagram teaches nothing.
+- Label every edge with a verb. An unlabelled arrow states no relationship.
+- Follow the diagram with a one-line caption that names what to notice.
+- Colour is never the only signal. The diagram must read in greyscale.
+- The surrounding text carries the fact as well. A diagram supports the text and
+  never replaces it.
 
 ## Claims
 
@@ -122,5 +171,7 @@ reader's level. Respect the reader by not wasting their time.
 - [ ] Every term defined on first use
 - [ ] No filler words from the list above
 - [ ] One name per concept
-- [ ] Code blocks tagged, commands tested
+- [ ] Code blocks tagged, and none of them is a procedure to copy
+- [ ] No command list or step-by-step the AI would perform
+- [ ] Every diagram has a caption and 7 nodes or fewer
 - [ ] The page opens with the definition, not a preamble

@@ -247,7 +247,7 @@
 
 - term: referrer
   aliases: [referrer header]
-  short: A header telling a site which page you arrived from. It can hand your URL to another company.
+  short: A header telling a site where you arrived from. Browsers now send only the domain to other sites.
   group: The web
 
 - term: developer tools
@@ -489,7 +489,7 @@
 
 - term: hashing
   aliases: [hash, hashed]
-  short: Turning a password into a scrambled value that cannot be turned back. Never store the password itself.
+  short: Turning a value into a fixed scrambled form. Reversing it is hard only when the input is unguessable.
   group: Security and access
 
 - term: encryption
@@ -532,7 +532,7 @@
 
 - term: insecure direct object reference
   aliases: [IDOR]
-  short: Letting someone read another person's record simply by changing a number in the address.
+  short: Letting someone read another person's record by changing the id in the address.
   group: Security and access
 
 # ---------------------------------------------------------------- code and tools

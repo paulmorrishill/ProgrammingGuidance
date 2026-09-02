@@ -59,7 +59,7 @@ Ids come in two shapes, and the choice has consequences beyond looking tidy.
 | Shape | Example | What it gives away |
 |---|---|---|
 | Counted up from 1 | `124` | The next record, the previous record, and how many you have |
-| Random | `8f14e45f-ce a8-4b1e-9f3c` | Nothing |
+| Random | `8f14e45f-ce a8-4b1e-9f3c` | Nothing about your other records |
 
 A counted id leaks business information to anyone who can see one. Order number 1042
 tells a competitor roughly how many orders you have taken. Two orders placed a week

@@ -60,7 +60,7 @@ you meant, and if you do not choose where, the language chooses for you.
 | True or false | One of two states | A setting that is on or off | Anything with a third state |
 | Date and time | One instant | When something happened | A duration, or a birthday |
 | List | Many values in order | Search results, line items | One value |
-| Nothing | The absence of a value | Recording that you do not know | A zero, or an empty answer |
+| Nothing | The absence of a value | Recording that there is no value | A zero, or an empty answer |
 
 ## Money
 

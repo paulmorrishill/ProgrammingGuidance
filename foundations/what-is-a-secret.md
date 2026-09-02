@@ -92,8 +92,8 @@ flowchart LR
 Each route ends somewhere you do not control and cannot erase.
 
 Two of these surprise people. A value in a URL reaches server logs, browser history
-and the referrer header sent to other websites. A logged configuration object prints
-every key inside it, and log files are read by more people than the database is.
+and every analytics script the page loads. A logged configuration object prints every
+key inside it, and log files are read by more people than the database is.
 
 ## Limit the damage before it happens
 

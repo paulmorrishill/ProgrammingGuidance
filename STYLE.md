@@ -95,6 +95,9 @@ a browser is cannot learn what a client is.
   drift, the glossary is wrong.
 - A term is never linked on the page that teaches it. That page is the definition.
 - Only the first mention on a page is linked, so a page never fills with underlines.
+- On the glossary page each definition is its own region. A definition that uses
+  another term links to it, and never links to itself. Write definitions expecting
+  this, so a reader who lands on one term can reach the terms it depends on.
 - Set `noauto: true` when the word is also a common English verb, such as build,
   test, process or index. The linker cannot tell the two senses apart, and a wrong
   tooltip is worse than none.

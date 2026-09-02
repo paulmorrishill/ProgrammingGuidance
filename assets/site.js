@@ -67,8 +67,13 @@ function findWholeWord(text, name) {
   return -1;
 }
 
-// Skip anything where a link would be wrong or ugly.
-const SKIP = 'a, code, pre, h1, h2, h3, h4, .mermaid, .caption, dt, dd';
+// Skip anything where a link would be wrong or ugly. Ordinary prose leaves the
+// definition list alone, because each definition is linked separately below.
+const PROSE_SKIP = 'a, code, pre, h1, h2, h3, h4, .mermaid, .caption, dt, dd';
+
+// Inside one definition there is no heading and no diagram, and the definition
+// list itself must not be skipped.
+const DEFINITION_SKIP = 'a, code, pre';
 
 function linkGlossaryTerms() {
   const dataEl = document.getElementById('glossary-data');
@@ -88,22 +93,36 @@ function linkGlossaryTerms() {
     const onOwnPage = Boolean(e.url) && trimSlash(BASEURL + e.url) === here;
     if (onOwnPage) continue;
     for (const name of [e.term, ...(e.aliases || [])]) {
-      entries.push({ name, short: e.short, href: target, key: e.term });
+      entries.push({ name, short: e.short, href: target, key: e.term, slug: slug(e.term) });
     }
   }
 
   // Longest name first, so "force push" wins over "push".
   entries.sort((a, b) => b.name.length - a.name.length);
 
+  // On the glossary page each definition is its own region, so a definition that
+  // uses another term links to it. A definition never links to itself.
+  for (const dd of main.querySelectorAll('dl.glossary dd')) {
+    const dt = dd.previousElementSibling;
+    const own = dt && dt.id ? dt.id.replace(/^term-/, '') : null;
+    linkInto(dd, entries.filter((e) => e.slug !== own), DEFINITION_SKIP);
+  }
+
+  // Then ordinary prose, which leaves the definition list alone.
+  linkInto(main, entries, PROSE_SKIP);
+}
+
+// Link the first mention of each term inside one region of the page.
+function linkInto(root, entries, skipSelector) {
   const linked = new Set();
 
   for (const entry of entries) {
     if (linked.has(entry.key)) continue;
 
-    const walker = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         if (findWholeWord(node.nodeValue, entry.name) === -1) return NodeFilter.FILTER_REJECT;
-        if (node.parentElement.closest(SKIP)) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement.closest(skipSelector)) return NodeFilter.FILTER_REJECT;
         return NodeFilter.FILTER_ACCEPT;
       },
     });

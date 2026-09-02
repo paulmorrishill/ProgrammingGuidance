@@ -109,7 +109,7 @@ You cannot prevent every leak. You can decide how much one leak costs.
 |---|---|
 | Whether a value is a secret | Only you know what it unlocks |
 | How much a key is allowed to do | Least privilege is a design choice, not a default |
-| Whether development and production share a key | Convenience against blast radius |
+| Whether development and production share a key | Convenience now, against how much one leak costs later |
 | What happens after a leak | Rotating now costs an hour. Waiting can cost the company. |
 
 ## Common mistakes

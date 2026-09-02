@@ -1,8 +1,11 @@
-name: Deploy site to Pages
+name: Check and deploy
 
+# Every push and every pull request runs the checks. Only master deploys, and only
+# after the checks pass.
 on:
   push:
     branches: [master]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -15,7 +18,24 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check:
+    name: Content and link checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+
+      # Builds with no path prefix and checks the result. Fails the job, and so
+      # blocks the deploy, on a broken link or a repeated glossary definition.
+      - run: bundle exec rake check
+
   build:
+    name: Build for Pages
+    needs: check
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +51,9 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
 
   deploy:
+    name: Deploy
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

@@ -217,6 +217,26 @@
   short: A network of machines worldwide that serves copies of your files from near each visitor.
   group: The web
 
+- term: request body
+  aliases: [body]
+  short: The main content of a request, holding the data being sent. The sender chooses every part of it.
+  group: The web
+
+- term: referrer
+  aliases: [referrer header]
+  short: A header telling a site which page you arrived from. It can hand your URL to another company.
+  group: The web
+
+- term: developer tools
+  aliases: [devtools, network tab]
+  short: A panel built into every browser showing a page's code, its network requests and its errors.
+  group: The web
+
+- term: bot
+  aliases: [bots, scanner, scanners]
+  short: A program that visits sites automatically with no person involved. Bots read new public code within seconds.
+  group: The web
+
 - term: HTML
   short: The language describing what is on a page, such as headings, text and buttons.
   group: The web
@@ -238,6 +258,12 @@
 - term: database
   aliases: [databases]
   short: An organised store of your app's data, built to be searched quickly and safely.
+  group: Data
+
+- term: id
+  aliases: [ids, identifier, identifiers, user id, user ids]
+  short: A short value naming one specific thing, such as one customer or one order.
+  url: /foundations/ids/
   group: Data
 
 - term: table
@@ -267,6 +293,64 @@
 - term: migration
   aliases: [migrations]
   short: A recorded change to the database shape, so the same change can be repeated everywhere.
+  group: Data
+
+- term: data type
+  aliases: [data types]
+  short: The kind of a value, such as text, a whole number or a date. The kind decides its behaviour.
+  url: /foundations/data-types/
+  group: Data
+
+- term: text
+  aliases: [string, strings]
+  short: A value made of characters. Anything typed into a form arrives as text.
+  url: /foundations/data-types/
+  group: Data
+
+- term: whole number
+  aliases: [integer, integers]
+  short: A number with no fraction. The safe way to hold money, counted in pence.
+  url: /foundations/data-types/
+  group: Data
+
+- term: decimal
+  aliases: [floating point, float, floats]
+  short: A number that can hold fractions, but only approximately. Never use it for money.
+  url: /foundations/data-types/
+  group: Data
+
+- term: boolean
+  aliases: [booleans]
+  short: A value that is either true or false, and nothing else.
+  url: /foundations/data-types/
+  group: Data
+
+- term: "null"
+  short: A recorded absence. It means the value is known to be missing, which differs from zero.
+  url: /foundations/data-types/
+  group: Data
+
+- term: array
+  aliases: [arrays]
+  short: An ordered list of values held under one name.
+  url: /foundations/data-types/
+  group: Data
+
+- term: UTC
+  short: One worldwide clock with no daylight saving. Store every moment in it and convert when displaying.
+  url: /foundations/data-types/
+  group: Data
+
+- term: time zone
+  aliases: [time zones, timezone, timezones]
+  short: The offset between local time in one place and the worldwide clock. It changes twice a year in many countries.
+  url: /foundations/data-types/
+  group: Data
+
+- term: UUID
+  aliases: [UUIDs, GUID]
+  short: A long random id, chosen so that no two are ever the same and none can be guessed.
+  url: /foundations/ids/
   group: Data
 
 - term: index
@@ -379,7 +463,7 @@
   group: Security and access
 
 - term: CORS
-  short: A browser rule limiting which websites may call your API from a visitor's browser. It does not protect the API itself.
+  short: A browser rule limiting which other websites may call your API. It does not protect the API itself.
   group: Security and access
 
 - term: personal data
@@ -498,6 +582,30 @@
 - term: force push
   aliases: [force pushing, force pushed, force pushes]
   short: A push that replaces the remote history with yours, deleting commits other people pushed.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: clone
+  aliases: [clones, cloned, cloning]
+  short: Copying a whole repository, including its complete history, onto another machine.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: push
+  aliases: [pushed, pushes, pushing]
+  short: Sending your commits from your machine to the remote copy.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: pull
+  aliases: [pulled, pulling]
+  short: Bringing commits from the remote copy into yours.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: history
+  aliases: [version history]
+  short: The full chain of commits, holding every state your project has ever been in.
   url: /foundations/what-is-git/
   group: Working with code
 

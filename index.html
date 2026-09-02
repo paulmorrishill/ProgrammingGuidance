@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Programming Guidance</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5c5c5c;
+    --accent: #2f6feb;
+    --border: #e2e2e2;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1115;
+      --fg: #e8e8e8;
+      --muted: #9aa0a6;
+      --accent: #6ea8fe;
+      --border: #2a2e35;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 4rem 1.5rem;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 42rem; margin: 0 auto; }
+  h1 { font-size: 2.25rem; margin: 0 0 .5rem; letter-spacing: -0.02em; }
+  p.lead { color: var(--muted); margin: 0 0 2.5rem; }
+  section { border-top: 1px solid var(--border); padding-top: 1.5rem; }
+  h2 { font-size: 1.1rem; margin: 0 0 .75rem; }
+  ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
+  footer { margin-top: 3rem; font-size: .875rem; color: var(--muted); }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Programming Guidance</h1>
+  <p class="lead">Placeholder page. Content coming soon.</p>
+
+  <section>
+    <h2>Planned</h2>
+    <ul>
+      <li>Language and framework notes</li>
+      <li>Architecture and design patterns</li>
+      <li>Tooling and workflow reference</li>
+    </ul>
+  </section>
+
+  <footer>
+    Source on <a href="https://github.com/paulmorrishill/ProgrammingGuidance">GitHub</a>.
+  </footer>
+</main>
+</body>
+</html>

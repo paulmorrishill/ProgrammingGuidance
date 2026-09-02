@@ -188,6 +188,46 @@ teaches the reader to ignore both.
 - Every NEVER names its consequence somewhere on the page.
 - The body explains why. The rule does not repeat the explanation.
 
+## Sentences that carry no information
+
+A second sentence must add a fact. When it adds only rhythm, delete it.
+
+### Say what a thing is
+
+Define a thing by what it is. A definition that pivots to another subject has defined
+nothing.
+
+The ids page was summarised as "An id names one thing. It never proves you are allowed
+to see it." The page is about ids. The second sentence is about permission, so a
+reader learns what an id is not, from a topic they have not met yet.
+
+- A definition names the thing, its purpose, and nothing else.
+- Move the consequence into the body, where there is room to explain it.
+
+### The contrast reflex
+
+"X. Not Y." and "It is not A, it is B" are shapes, not information. They read as
+insight because of the rhythm.
+
+A negation earns its place only when it corrects a belief the reader actually holds,
+and the page supplies the correct belief in the same breath. "Why a commit is not a
+save" survives, because people do believe a commit is a save. "A name is not a key"
+did not, because nobody believed it was, and the sentence existed for its cadence.
+
+Test it by asking who holds the wrong belief. If the answer is nobody, the sentence is
+an invented opponent. Delete it and state the fact.
+
+### Other shapes to delete
+
+- **Restatement for emphasis.** The second sentence repeats the first in stronger
+  words. Keep one.
+- **Verdict lines.** "This is the difference between a curiosity and a real defect."
+  State the impact or say nothing.
+- **Superlatives about a finding.** "The worst of the three" ranks for effect. Say
+  what fails and for whom.
+- **Graded asides.** "Probably worth checking first" either means check it first, or
+  means nothing.
+
 ## Page shape
 
 Every topic page uses this order:

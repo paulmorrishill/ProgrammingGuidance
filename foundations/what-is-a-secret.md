@@ -23,8 +23,8 @@ project are secrets, because that depends on what each one unlocks.
 
 ## The problem
 
-A leaked secret is not a warning. It is a charge on your card, a copy of your
-customer table, or an email sent from your domain.
+A leaked secret becomes a charge on your card, a copy of your customer table, or an
+email sent from your domain.
 
 Automated scanners read every public commit within seconds of the push. A key
 published by mistake at 2am is used before you wake. The cost is not theoretical and

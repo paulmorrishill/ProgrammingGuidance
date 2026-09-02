@@ -62,7 +62,8 @@ Your website is not your program. It is a copy of your program that you gave awa
 The person holding it can read every line, change any value while it runs, and send
 your server any request they like with no browser involved.
 
-So a check that runs only in the browser is not a check. It is a hint.
+So a check that runs only in the browser is advice to the user. It stops nobody who
+would rather not take it.
 
 ## Then why validate on the client at all
 

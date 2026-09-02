@@ -137,7 +137,28 @@ Flag, quoting the sentence:
 - A hedge promoted to a fact, or a fact softened into a hedge.
 - Synonym rotation. One thing must keep one name across the page.
 
-## 8. Per-language variation
+## 8. Sentences that carry no information
+
+*Origin: the ids page was summarised as "An id names one thing. It never proves you
+are allowed to see it." The page is about ids, and the second sentence is about
+permission.*
+
+Flag:
+
+- A definition or summary that pivots to a different subject instead of saying what
+  the thing is.
+- The contrast reflex: "X. Not Y." or "It is not A, it is B", used for rhythm. A
+  negation earns its place only when it corrects a belief a reader actually holds, and
+  the page then supplies the correct belief. Ask who holds the wrong belief. If the
+  answer is nobody, the sentence invented an opponent.
+- Restatement for emphasis, where the second sentence repeats the first in stronger
+  words.
+- Verdict lines, superlatives about a finding, and graded asides such as "probably
+  worth checking first".
+
+For each, quote the sentence and give the replacement, or say to delete it.
+
+## 9. Per-language variation
 
 *Origin: "on types we could be talking about so many different systems, we need an
 accordion where there is large variation".*
@@ -152,7 +173,7 @@ Flag:
   the accordion is noise and should go.
 - An entry that teaches the language rather than naming the difference.
 
-## 9. Page shape
+## 10. Page shape
 
 *Origin: the style guide fixes the order.*
 
@@ -163,7 +184,7 @@ Flag a page that opens with a preamble instead of the definition, a section padd
 because the template listed it, or a missing "what you decide" on a page where real
 judgment exists.
 
-## 10. Honesty about the reader's job
+## 11. Honesty about the reader's job
 
 *Origin: the site's premise. The AI writes the code, so the page must carry what the
 AI cannot decide.*

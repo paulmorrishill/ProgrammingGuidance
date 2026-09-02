@@ -11,6 +11,7 @@ kramdown:
 
 exclude:
   - README.md
+  - CLAUDE.md
   - STYLE.md
 
 # Directory-style URLs, so local WEBrick and GitHub Pages resolve the same paths.

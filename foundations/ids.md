@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Ids
-summary: An id names one thing. It never proves you are allowed to see it.
+summary: How your app names each record, where those names travel, and what they give away.
 tier: Foundations
 slug: ids
 order: 5
@@ -36,11 +36,9 @@ was hacked. Someone typed a different number.
 
 ## Mental model
 
-An id names a thing. A name is not a key.
-
-Knowing the id of a record tells your server which record to fetch. It says nothing
-about whether the person asking is allowed to have it. Those are two separate
-questions, and code that asks only the first is broken.
+An id answers exactly one question: which record. Your server needs a second answer
+before it hands anything over, and the id contributes nothing to that one. Code that
+asks only the first question is broken.
 
 ```mermaid
 flowchart TD

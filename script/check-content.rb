@@ -65,7 +65,8 @@ end
 
 pages = Dir.glob(File.join(ROOT, "**", "*.md")).reject do |path|
   rel = path.sub(ROOT + File::SEPARATOR, "").tr("\\", "/")
-  rel.start_with?("_site/", "vendor/", "node_modules/") || rel == "README.md" || rel == "STYLE.md"
+  rel.start_with?("_site/", "vendor/", "node_modules/", ".claude/") ||
+    %w[README.md STYLE.md CLAUDE.md].include?(rel)
 end
 
 def normalise(text)
@@ -132,8 +133,12 @@ end
 
 # A reader works through the pages in order, so a page may only depend on pages
 # that come before it.
-sequenced = pages.map { |path| [path, YAML.safe_load(File.read(path)[/\A---\s*\n(.*?)\n---/m, 1]) || {}] }
-                 .select { |_, front| front["slug"] }
+sequenced = pages.filter_map do |path|
+  front_matter = File.read(path)[/\A---\s*\n(.*?)\n---/m, 1]
+  next if front_matter.nil?
+  front = YAML.safe_load(front_matter) || {}
+  [path, front] if front["slug"]
+end
 
 slugs = {}
 sequenced.each do |path, front|

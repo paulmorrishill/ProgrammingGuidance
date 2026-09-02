@@ -57,7 +57,7 @@ Give each subagent this prompt, with `<PAGE>` replaced:
 > Also read every page listed in the page's `requires` front matter, because the
 > reader has read those and nothing later.
 >
-> Work through all ten rubric sections in order. For each finding report:
+> Work through all eleven rubric sections in order. For each finding report:
 > - the rubric section number and name
 > - severity: blocker, major or minor
 > - the exact quoted text, with its line number

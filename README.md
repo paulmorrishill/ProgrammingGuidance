@@ -33,6 +33,16 @@ Two gates, both run in CI. A failure in either blocks the deploy.
   Repeating one in a page fails the build. The check also enforces the 20-word limit
   on definitions, the ban on semicolons, and the shape of a rules block.
 
+## Reviewing content
+
+The automated gates cannot judge whether a page assumes too much. That review lives in
+a skill at `.claude/skills/content-review/`, which asks which pages to cover and then
+runs one subagent per page against `references/rubric.md`.
+
+Every check in that rubric exists because a real page failed it, and each records the
+correction it came from. Add to it when a new class of mistake appears, rather than
+remembering the lesson.
+
 ## Local preview
 
 Ruby 3.4 and Bundler are required.

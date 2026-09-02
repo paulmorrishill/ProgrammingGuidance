@@ -66,22 +66,40 @@ mark nothing.
   aliases: [force pushing, force pushed]
   short: A push that replaces the remote history with yours, deleting commits other people pushed.
   url: /foundations/what-is-git/
+  group: Working with code
 ```
 
 - `short` is one sentence, 20 words or fewer. It is a definition, not a warning.
 - `url` names the page that teaches the term. Omit it when no page does, and the
   term links to the glossary entry instead.
+- `group` is the heading it appears under on the glossary page.
+- `noauto: true` keeps the term in the glossary but stops it being linked in prose.
 - List every form a writer will type in `aliases`, including the plural.
+
+### What earns an entry
+
+Assume the reader knows nothing. A term earns an entry when someone new to
+programming would stop reading to look it up. That includes everyday words used in
+a specific sense here, such as logic, permission, client-side and browser.
+
+Leaving such a word out is the more common mistake. A reader who does not know what
+a browser is cannot learn what a client is.
 
 ### Rules
 
-- A term earns an entry when a reader who misreads it makes a costly mistake.
-  Ordinary English words do not qualify.
+- Write the definition for someone with no background. A definition that uses two
+  more undefined terms has failed.
 - Never rely on the tooltip to carry a fact. A page defines its own terms in the
   prose, exactly as it would with no tooltips at all.
 - The definition in the glossary and the definition on the page agree. When they
   drift, the glossary is wrong.
 - A term is never linked on the page that teaches it. That page is the definition.
+- Only the first mention on a page is linked, so a page never fills with underlines.
+- Set `noauto: true` when the word is also a common English verb, such as build,
+  test, process or index. The linker cannot tell the two senses apart, and a wrong
+  tooltip is worse than none.
+- Never add an alias that is an ordinary word in another sense. `live` for
+  production matched the sentence "both sides live in one repository".
 
 ## Concise
 

@@ -1,96 +1,579 @@
-# One definition per term, used by the tooltips and by /glossary/.
-# short: one sentence, 20 words or fewer.
-# url:   the page that teaches the term. Omit it when only the glossary defines it.
+# One definition per term. Used by the hover tooltips and by /glossary/.
+#
+# short:  one sentence, 20 words or fewer, written for someone who knows nothing.
+# url:    the page that teaches the term. Omit it and the term links to the glossary.
+# group:  the heading it appears under on the glossary page.
+# noauto: true stops the term being linked automatically in prose. Use it for words
+#         so common that a link would be noise.
 
-- term: repository
-  aliases: [repositories, repo, repos]
-  short: A project folder plus the hidden .git folder holding its complete history.
-  url: /foundations/what-is-git/
+# ---------------------------------------------------------------- basics
 
-- term: commit
-  aliases: [commits, committed, committing]
-  short: One saved checkpoint, holding a snapshot of every tracked file and a link to the commit before it.
-  url: /foundations/what-is-git/
+- term: program
+  aliases: [application]
+  short: A set of instructions a computer follows.
+  group: Basics
 
-- term: branch
-  aliases: [branches]
-  short: A movable label that points at one commit.
-  url: /foundations/what-is-git/
+- term: code
+  short: The written instructions that make up a program.
+  group: Basics
+  noauto: true
 
-- term: remote
-  aliases: [remotes]
-  short: A copy of a repository on another machine, usually GitHub.
-  url: /foundations/what-is-git/
+- term: logic
+  aliases: [business logic]
+  short: The part of your code that decides what should happen, such as who may buy at what price.
+  group: Basics
 
-- term: force push
-  aliases: [force pushing, force pushed, force pushes]
-  short: A push that replaces the remote history with yours, deleting commits other people pushed.
-  url: /foundations/what-is-git/
+- term: function
+  aliases: [functions]
+  short: A named piece of code that does one job and can be used again.
+  group: Basics
 
-- term: merge conflict
-  aliases: [merge conflicts]
-  short: Git stopping because two commits changed the same lines, and only you can choose between them.
-  url: /foundations/what-is-git/
+- term: variable
+  aliases: [variables]
+  short: A named box holding a value that your code can read or change.
+  group: Basics
 
-- term: secret
-  aliases: [secrets]
-  short: A value that grants access or proves identity. Holding it is the same as being you.
-  url: /foundations/what-is-a-secret/
+- term: file
+  short: One named document on a disk, holding text, code or data.
+  group: Basics
+  noauto: true
 
-- term: API key
-  aliases: [API keys]
-  short: A token that acts as your account on another company's service. Its usage is billed to you.
-  url: /foundations/what-is-a-secret/
+- term: folder
+  aliases: [directory]
+  short: A named container holding files and other folders.
+  group: Basics
+  noauto: true
 
-- term: signing key
-  aliases: [signing keys, session secret, JWT secret]
-  short: A secret that lets its holder create valid logins, without any failed attempt being recorded.
-  url: /foundations/what-is-a-secret/
+- term: terminal
+  aliases: [command line, shell]
+  short: A window where you type commands to the computer instead of clicking.
+  group: Basics
 
-- term: rotate
-  aliases: [rotating, rotated, rotation]
-  short: Replace a secret with a new one and disable the old one. The only real fix after a leak.
-  url: /foundations/what-is-a-secret/
+- term: command
+  aliases: [commands]
+  short: One typed instruction that tells a program to do something.
+  group: Basics
+
+- term: process
+  short: A running copy of a program, using memory and doing work right now.
+  noauto: true
+  group: Basics
+
+# ---------------------------------------------------------------- where code runs
 
 - term: client
   aliases: [clients, front end, frontend]
   short: Your code running on someone else's machine, usually a browser. You control none of it.
   url: /foundations/client-and-server/
+  group: Where code runs
 
 - term: server
   aliases: [servers, back end, backend]
   short: Your code running on a machine you control. The only place a rule can be enforced.
   url: /foundations/client-and-server/
+  group: Where code runs
+
+- term: browser
+  aliases: [browsers, web browser]
+  short: The program a visitor uses to open your site, such as Chrome, Safari or Firefox.
+  group: Where code runs
+
+- term: client-side
+  aliases: [in the browser]
+  short: Work done on the visitor's machine. They can read it and change it.
+  url: /foundations/client-and-server/
+  group: Where code runs
+
+- term: server-side
+  short: Work done on your machine. The visitor sees only the result.
+  url: /foundations/client-and-server/
+  group: Where code runs
+
+- term: localhost
+  short: Your own machine, seen from the inside. The site only you can open while building.
+  group: Where code runs
+
+- term: port
+  short: A numbered door on a machine. Two programs cannot use the same one at once.
+  group: Where code runs
+
+- term: hosting
+  aliases: [hosted]
+  short: Renting a machine that runs your site and stays switched on.
+  group: Where code runs
+
+- term: environment
+  aliases: [environments]
+  short: One complete copy of your app and its data, such as development or production.
+  group: Where code runs
+
+- term: production
+  aliases: [prod]
+  short: The environment real customers use. Mistakes here are real.
+  group: Where code runs
+
+- term: staging
+  short: A copy of production used for testing, holding no real customer data.
+  group: Where code runs
+
+- term: environment variable
+  aliases: [environment variables]
+  short: A value given to a program by its surroundings rather than written into its code.
+  group: Where code runs
+
+- term: deploy
+  aliases: [deployment, deploying, deployed]
+  short: Sending a new version of your code to the machine that serves real users.
+  group: Where code runs
+
+- term: build
+  short: Turning the code you wrote into the files that actually get served.
+  noauto: true
+  group: Where code runs
+
+- term: rollback
+  aliases: [roll back]
+  short: Putting the previous working version back after a bad release.
+  group: Where code runs
+
+# ---------------------------------------------------------------- the web
+
+- term: HTTP
+  short: The language browsers and servers use to ask for things and answer.
+  group: The web
+
+- term: HTTPS
+  short: HTTP with encryption, so nobody between the visitor and your server can read or change it.
+  group: The web
+
+- term: request
+  aliases: [requests]
+  short: One message from a browser or program asking your server to do something.
+  group: The web
+
+- term: response
+  aliases: [responses]
+  short: What your server sends back after a request.
+  group: The web
+
+- term: URL
+  aliases: [URLs, web address]
+  short: The full address of a page or an endpoint, including the domain and the path.
+  group: The web
+
+- term: domain
+  aliases: [domain name]
+  short: The name people type to reach your site, such as example.com.
+  group: The web
+
+- term: DNS
+  short: The system that turns a domain name into the address of an actual machine.
+  group: The web
+
+- term: certificate
+  aliases: [TLS certificate, SSL certificate]
+  short: A file proving your site really is the domain it claims to be. It expires and must be renewed.
+  group: The web
+
+- term: API
+  aliases: [APIs]
+  short: A way for one program to ask another program to do something or hand over data.
+  group: The web
+
+- term: endpoint
+  aliases: [endpoints]
+  short: One specific address in your API that does one job.
+  group: The web
+
+- term: JSON
+  short: A plain text format for sending structured data between programs.
+  group: The web
+
+- term: header
+  aliases: [headers]
+  short: Extra information attached to a request or response, such as who is asking.
+  group: The web
+
+- term: query string
+  short: The part of a URL after a question mark, carrying extra values. It is recorded in logs and history.
+  group: The web
+
+- term: cookie
+  aliases: [cookies]
+  short: A small value the browser stores and sends back on every request, often used to keep you signed in.
+  group: The web
+
+- term: session
+  aliases: [sessions]
+  short: The server's own record of who a signed-in user is, kept across requests.
+  group: The web
+
+- term: cache
+  aliases: [caching, cached]
+  short: A saved copy of something slow to produce, used to answer faster. It can go stale.
+  group: The web
+
+- term: CDN
+  short: A network of machines worldwide that serves copies of your files from near each visitor.
+  group: The web
+
+- term: HTML
+  short: The language describing what is on a page, such as headings, text and buttons.
+  group: The web
+
+- term: CSS
+  short: The language describing how a page looks, such as colour, size and position.
+  group: The web
+
+- term: JavaScript
+  short: The language that runs inside the browser and makes a page react to the visitor.
+  group: The web
+
+- term: DOM
+  short: The live structure of the page in memory. JavaScript changes this, not the original file.
+  group: The web
+
+# ---------------------------------------------------------------- data
+
+- term: database
+  aliases: [databases]
+  short: An organised store of your app's data, built to be searched quickly and safely.
+  group: Data
+
+- term: table
+  aliases: [tables]
+  short: One kind of thing in a database, such as customers, stored as rows and columns.
+  group: Data
+
+- term: row
+  aliases: [rows]
+  short: One item in a table, such as a single customer.
+  group: Data
+
+- term: column
+  aliases: [columns]
+  short: One piece of information every row holds, such as an email address.
+  group: Data
+
+- term: query
+  aliases: [queries]
+  short: A question you ask the database, such as which orders belong to one customer.
+  group: Data
+
+- term: schema
+  short: The shape of your database, listing every table and column.
+  group: Data
+
+- term: migration
+  aliases: [migrations]
+  short: A recorded change to the database shape, so the same change can be repeated everywhere.
+  group: Data
+
+- term: index
+  aliases: [database index, indexes]
+  short: A lookup structure that makes one kind of query fast. Without it, large tables crawl.
+  noauto: true
+  group: Data
+
+- term: backup
+  aliases: [backups]
+  short: A copy of your data kept elsewhere. It counts only once you have restored from it successfully.
+  group: Data
+
+- term: transaction
+  aliases: [transactions]
+  short: A group of database changes that all happen, or none happen.
+  group: Data
+
+- term: race condition
+  short: A bug where two things happen at once and the result depends on which finished first.
+  group: Data
+
+# ---------------------------------------------------------------- security and access
+
+- term: secret
+  aliases: [secrets]
+  short: A value that grants access or proves identity. Holding it is the same as being you.
+  url: /foundations/what-is-a-secret/
+  group: Security and access
+
+- term: API key
+  aliases: [API keys]
+  short: A token that acts as your account on another company's service. Its usage is billed to you.
+  url: /foundations/what-is-a-secret/
+  group: Security and access
+
+- term: signing key
+  aliases: [signing keys, session secret, JWT secret]
+  short: A secret that lets its holder create valid logins, without any failed attempt being recorded.
+  url: /foundations/what-is-a-secret/
+  group: Security and access
+
+- term: token
+  aliases: [tokens, access token]
+  short: A value that proves you already signed in, sent with each later request.
+  group: Security and access
+
+- term: credential
+  aliases: [credentials]
+  short: Anything used to prove who you are, such as a password or a key.
+  group: Security and access
+
+- term: rotate
+  aliases: [rotating, rotated, rotation]
+  short: Replace a secret with a new one and disable the old one. The only real fix after a leak.
+  url: /foundations/what-is-a-secret/
+  group: Security and access
 
 - term: authentication
-  aliases: [authenticate, authenticated]
+  aliases: [authenticate, authenticated, sign in, log in]
   short: Checking who someone is.
   url: /foundations/client-and-server/
+  group: Security and access
 
 - term: authorization
-  aliases: [authorize, authorized, permission check]
+  aliases: [authorize, authorized, authorisation]
   short: Checking what someone is allowed to do. Passing authentication grants nothing here.
   url: /foundations/client-and-server/
+  group: Security and access
+
+- term: permission
+  aliases: [permissions, permission check]
+  short: A statement that one person may do one thing. Your server checks it on every request.
+  url: /foundations/client-and-server/
+  group: Security and access
+
+- term: role
+  aliases: [roles]
+  short: A named group of permissions, such as admin or viewer, given to a person.
+  group: Security and access
 
 - term: validation
   aliases: [validate, validated]
   short: Checking that data is well formed and permitted before your code acts on it.
   url: /foundations/client-and-server/
+  group: Security and access
 
-- term: Row Level Security
-  aliases: [RLS]
-  short: Database rules deciding which rows each user may read or change. Off until you enable it.
+- term: hashing
+  aliases: [hash, hashed]
+  short: Turning a password into a scrambled value that cannot be turned back. Never store the password itself.
+  group: Security and access
 
-- term: CORS
-  short: A browser rule limiting which websites may call your API from a visitor's browser. It does not protect the API itself.
+- term: encryption
+  aliases: [encrypted, encrypt]
+  short: Scrambling data so only the holder of the key can read it.
+  group: Security and access
 
-- term: environment variable
-  aliases: [environment variables]
-  short: A value given to a program by its surroundings rather than written in its code.
-
-- term: session
-  aliases: [sessions]
-  short: The server's own record of who a signed-in user is, kept across requests.
+- term: rate limit
+  aliases: [rate limiting, rate limits]
+  short: A cap on how often one caller may hit your service, so nobody can drain or flood it.
+  group: Security and access
 
 - term: least privilege
   short: Granting the smallest permission that still works, so one leak costs less.
+  group: Security and access
+
+- term: Row Level Security
+  aliases: [RLS]
+  short: Database rules deciding which rows each user may read or change. Off until you switch it on.
+  group: Security and access
+
+- term: CORS
+  short: A browser rule limiting which websites may call your API from a visitor's browser. It does not protect the API itself.
+  group: Security and access
+
+- term: personal data
+  aliases: [PII, personally identifiable information]
+  short: Anything identifying a real person, such as a name, email address or location. The law treats it seriously.
+  group: Security and access
+
+- term: SQL injection
+  short: An attack where text a user typed is treated as database commands.
+  group: Security and access
+
+- term: cross-site scripting
+  aliases: [XSS]
+  short: An attack where text a user supplied runs as code in another visitor's browser.
+  group: Security and access
+
+- term: insecure direct object reference
+  aliases: [IDOR]
+  short: Letting someone read another person's record simply by changing a number in the address.
+  group: Security and access
+
+# ---------------------------------------------------------------- code and tools
+
+- term: dependency
+  aliases: [dependencies]
+  short: Someone else's code that your project needs in order to run.
+  group: Code and tools
+
+- term: library
+  aliases: [libraries, package, packages]
+  short: A bundle of someone else's code you call when you want it.
+  group: Code and tools
+
+- term: framework
+  aliases: [frameworks]
+  short: A structure that runs your code and decides the overall shape of your app.
+  group: Code and tools
+
+- term: package manager
+  short: The tool that downloads and updates the libraries your project depends on.
+  group: Code and tools
+
+- term: lockfile
+  aliases: [lock file]
+  short: A record of the exact library versions installed, so every machine gets the same ones.
+  group: Code and tools
+
+- term: import
+  aliases: [imports, imported]
+  short: A line pulling another file's code into this one. Whatever you import travels with it.
+  group: Code and tools
+
+- term: bundle
+  aliases: [bundling, bundled]
+  short: Combining many code files into the few the browser downloads.
+  group: Code and tools
+
+- term: minify
+  aliases: [minified, minification]
+  short: Shrinking code by removing spaces and shortening names. It hides nothing.
+  group: Code and tools
+
+- term: open source
+  short: Code published for anyone to read and use, under a licence setting the conditions.
+  group: Code and tools
+
+- term: licence
+  aliases: [license, licences, licenses]
+  short: The terms saying how you may use someone else's code. Some forbid commercial use.
+  group: Code and tools
+
+# ---------------------------------------------------------------- working with code
+
+- term: version control
+  short: A tool recording every change to your project, so any earlier state can be recovered.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: repository
+  aliases: [repositories, repo, repos]
+  short: A project folder plus the hidden history of every change ever made to it.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: commit
+  aliases: [commits, committed, committing]
+  short: One saved checkpoint, holding a snapshot of every tracked file and a link to the one before it.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: branch
+  aliases: [branches]
+  short: A movable label pointing at one commit, used to try a change safely.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: remote
+  aliases: [remotes]
+  short: A copy of a repository on another machine, usually GitHub.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: merge
+  aliases: [merged, merging]
+  short: Joining the work on one branch into another.
+  url: /foundations/what-is-git/
+  noauto: true
+  group: Working with code
+
+- term: merge conflict
+  aliases: [merge conflicts]
+  short: Git stopping because two commits changed the same lines, and only you can choose between them.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: force push
+  aliases: [force pushing, force pushed, force pushes]
+  short: A push that replaces the remote history with yours, deleting commits other people pushed.
+  url: /foundations/what-is-git/
+  group: Working with code
+
+- term: pull request
+  aliases: [pull requests, PR]
+  short: A proposal to merge one branch into another, so others can review it first.
+  group: Working with code
+
+- term: code review
+  short: Another person reading a change before it merges, to catch what the author cannot see.
+  group: Working with code
+
+- term: test
+  aliases: [tests, unit test, automated test]
+  short: Code that checks your code still behaves correctly, run automatically on every change.
+  noauto: true
+  group: Working with code
+
+- term: end-to-end test
+  aliases: [e2e test]
+  short: A test driving the whole app the way a real person would.
+  group: Working with code
+
+- term: continuous integration
+  aliases: [CI]
+  short: A service that builds your project and runs its tests automatically on every change.
+  group: Working with code
+
+- term: feature flag
+  aliases: [feature flags]
+  short: A switch letting you turn a feature on or off without releasing new code.
+  group: Working with code
+
+# ---------------------------------------------------------------- running and watching
+
+- term: log
+  aliases: [logs, logging, logged]
+  short: A written record of what your program did, kept so you can find out what went wrong.
+  group: Running and watching
+
+- term: error
+  aliases: [errors, exception]
+  short: The program reporting that it could not do what it was asked.
+  group: Running and watching
+
+- term: stack trace
+  short: The list of function calls leading to an error. The top line is usually where to look.
+  group: Running and watching
+
+- term: debugging
+  aliases: [debug]
+  short: Finding why a program behaves wrongly, by narrowing down where the behaviour first differs.
+  group: Running and watching
+
+- term: monitoring
+  aliases: [monitor]
+  short: Watching a running system automatically, so you learn about a problem before your customers tell you.
+  noauto: true
+  group: Running and watching
+
+- term: webhook
+  aliases: [webhooks]
+  short: Another company's service calling your server when something happens, instead of you asking repeatedly.
+  group: Running and watching
+
+- term: background job
+  aliases: [background jobs, worker]
+  short: Work done after a request has been answered, so a slow task does not keep the visitor waiting.
+  group: Running and watching
+
+- term: queue
+  aliases: [queues]
+  short: A waiting line of jobs to be done, so work is never lost when the system is busy.
+  group: Running and watching
+
+- term: idempotent
+  aliases: [idempotency]
+  short: Safe to repeat. Doing it twice leaves the same result as doing it once.
+  group: Running and watching

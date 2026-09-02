@@ -52,7 +52,9 @@ const trimSlash = (s) => s.replace(/[/]+$/, '');
 
 // Whole-word search done without a regular expression, so a term containing
 // punctuation needs no escaping. Returns the index of the match, or -1.
-const isWordChar = (c) => (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');
+// A hyphen counts as part of a word, so "client" does not match inside
+// "client-side" and steal the longer term's link.
+const isWordChar = (c) => (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9') || c === '-';
 
 function findWholeWord(text, name) {
   const hay = text.toLowerCase();
@@ -80,6 +82,8 @@ function linkGlossaryTerms() {
     const target = e.url
       ? BASEURL + e.url
       : BASEURL + '/glossary/#term-' + slug(e.term);
+    // Some terms are too common to link in prose. They stay in the glossary.
+    if (e.noauto) continue;
     // Never link a term to the page the reader is already reading.
     const onOwnPage = Boolean(e.url) && trimSlash(BASEURL + e.url) === here;
     if (onOwnPage) continue;

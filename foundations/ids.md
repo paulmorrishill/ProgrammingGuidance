@@ -2,6 +2,10 @@
 layout: default
 title: Ids
 summary: An id names one thing. It never proves you are allowed to see it.
+tier: Foundations
+slug: ids
+order: 5
+requires: [data-types, client-and-server]
 ---
 
 An id is a short value that names one specific thing, such as one customer or one

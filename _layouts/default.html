@@ -16,7 +16,30 @@
 <main>
   {% if page.title %}<h1>{{ page.title }}</h1>{% endif %}
   {% if page.summary %}<p class="lead">{{ page.summary }}</p>{% endif %}
+
+  {% assign sequence = site.pages | where_exp: "p", "p.slug" %}
+
+  {% if page.requires and page.requires.size > 0 %}
+  <p class="prereq"><strong>Read first:</strong>
+    {% for req in page.requires %}
+      {% assign before = sequence | where: "slug", req | first %}
+      <a href="{{ before.url | relative_url }}">{{ before.title }}</a>{% unless forloop.last %}, {% endunless %}
+    {% endfor %}
+  </p>
+  {% endif %}
+
   {{ content }}
+
+  {% if page.tier %}
+    {% assign tier_pages = sequence | where: "tier", page.tier | sort: "order" %}
+    {% assign later = tier_pages | where_exp: "p", "p.order > page.order" %}
+    {% assign upcoming = later | first %}
+    {% if upcoming %}
+    <p class="sequence-next"><strong>Next in {{ page.tier }}:</strong>
+      <a href="{{ upcoming.url | relative_url }}">{{ upcoming.title }}</a>
+    </p>
+    {% endif %}
+  {% endif %}
 </main>
 
 <footer>

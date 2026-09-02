@@ -8,17 +8,31 @@ An AI writes the commands, the config and most of the code. It does not give you
 model underneath them. This site covers what is left: the ideas you need to judge the
 output, and the decisions that stay yours.
 
-Three tiers, from the ground up.
+Read the pages in order. Each one assumes only the pages before it, and nothing else.
+
+{% assign sequence = site.pages | where_exp: "p", "p.slug" %}
 
 ## Foundations
 
 The ideas under the tools you already use.
 
-- [What is Git]({{ '/foundations/what-is-git' | relative_url }})
-- [What is a secret]({{ '/foundations/what-is-a-secret' | relative_url }})
-- [Client and server]({{ '/foundations/client-and-server' | relative_url }})
-- [Ids]({{ '/foundations/ids' | relative_url }})
-- [Data types]({{ '/foundations/data-types' | relative_url }})
+{% assign foundations = sequence | where: "tier", "Foundations" | sort: "order" %}
+<ol class="path">
+{% for p in foundations %}
+  <li>
+    <span class="step">{{ p.order }}.</span>
+    <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+    {% if p.requires and p.requires.size > 0 %}
+      <br><span class="step"></span><span class="needs">needs
+      {% for req in p.requires %}
+        {% assign before = sequence | where: "slug", req | first %}
+        {{ before.title }}{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+      </span>
+    {% endif %}
+  </li>
+{% endfor %}
+</ol>
 
 ## Building
 

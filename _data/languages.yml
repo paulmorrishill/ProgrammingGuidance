@@ -1,0 +1,13 @@
+# The languages every accordion must cover, in this order.
+# The build fails if a page covers some and not others, because a reader who uses
+# the missing one learns nothing from a partial list.
+- id: javascript
+  name: JavaScript and TypeScript
+- id: python
+  name: Python
+- id: csharp
+  name: C#
+- id: java
+  name: Java
+- id: php
+  name: PHP

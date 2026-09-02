@@ -204,6 +204,58 @@ Every topic page uses this order:
 
 Skip a section when it has nothing to say. Do not pad it.
 
+## Sequence and prerequisites
+
+Pages are read in order. A reader starting at the top must never meet an idea that a
+later page explains.
+
+Each page declares its place in front matter:
+
+```yaml
+tier: Foundations
+slug: data-types
+order: 2
+requires: [variables-and-values]
+```
+
+- `requires` lists the pages a reader must have read. List only true prerequisites.
+- The build fails when a page requires one that comes later, or one that does not exist.
+- The site shows "Read first" at the top and "Next in this tier" at the bottom. Do not
+  write either by hand.
+
+Adding a page means asking one question: what must the reader already know? If the
+answer is not yet a page, write that page first. The data types page needs variables
+and values, because a reader who does not know what a value is cannot learn what kind
+a value has.
+
+## Per-language detail
+
+A concept holds everywhere. How much a language helps varies enormously. Where that
+variation changes what the reader must do, add an accordion below the main
+explanation.
+
+```markdown
+<div class="languages" markdown="1">
+
+<details markdown="1">
+<summary>JavaScript and TypeScript</summary>
+
+- **The point in bold.** Then the consequence.
+
+</details>
+
+</div>
+```
+
+- The languages and their order live in `_data/languages.yml`. Cover all of them.
+  The build fails on a partial or reordered list, because a reader who uses the
+  missing one learns that the page has nothing for them.
+- The accordion is closed by default. The concept above it is the page. This is a
+  footnote for whoever needs it.
+- Write the difference, not a tutorial. C# has an exact decimal type for money and
+  JavaScript has no whole number type at all. Those change what the reader does.
+- Do not add an accordion where the languages agree. It teaches nothing and it rots.
+
 ## Jargon
 
 Define a term the first time it appears, in the same sentence.

@@ -2,6 +2,10 @@
 layout: default
 title: What is Git
 summary: The history of your project, and the four decisions only you can make about it.
+tier: Foundations
+slug: what-is-git
+order: 3
+requires: []
 ---
 
 Git records the history of your project. Each checkpoint stores the state of every

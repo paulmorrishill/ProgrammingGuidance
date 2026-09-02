@@ -183,3 +183,50 @@ nav.toc {
   border-bottom: 1px solid var(--border);
   font-size: .9rem;
 }
+
+/* Per-language detail. Collapsed by default, because the concept above is the
+   point and the language detail is a footnote for whoever needs it. */
+.languages {
+  margin: 1.75rem 0 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.languages details { border-bottom: 1px solid var(--border); }
+.languages details:last-child { border-bottom: none; }
+.languages summary {
+  padding: .65rem 1rem;
+  font-weight: 600;
+  font-size: .95rem;
+  cursor: pointer;
+  background: var(--code-bg);
+  list-style: none;
+}
+.languages summary::-webkit-details-marker { display: none; }
+.languages summary::before {
+  content: "\203A";
+  display: inline-block;
+  width: 1rem;
+  color: var(--muted);
+  transition: transform .15s ease;
+}
+.languages details[open] > summary::before { transform: rotate(90deg); }
+.languages summary:hover { color: var(--accent); }
+.languages > details > *:not(summary) { padding: 0 1rem; }
+.languages details > p:last-child, .languages details > ul:last-child { padding-bottom: .9rem; }
+
+p.prereq, p.sequence-next {
+  margin: 1.5rem 0;
+  padding: .6rem .9rem;
+  border-left: 3px solid var(--accent);
+  background: var(--code-bg);
+  border-radius: 0 6px 6px 0;
+  font-size: .92rem;
+}
+p.prereq { margin-top: 0; }
+p.sequence-next { margin-top: 3rem; }
+
+ol.path { counter-reset: step; list-style: none; padding-left: 0; }
+ol.path li { margin: .5rem 0; }
+ol.path .step { display: inline-block; min-width: 1.6rem; color: var(--muted); }
+ol.path .needs { color: var(--muted); font-size: .875rem; }

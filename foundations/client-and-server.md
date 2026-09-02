@@ -2,6 +2,10 @@
 layout: default
 title: Client and server
 summary: One line divides code you control from code you do not. Almost every security mistake crosses it.
+tier: Foundations
+slug: client-and-server
+order: 4
+requires: []
 ---
 
 The client is your code running on someone else's machine. The server is your code

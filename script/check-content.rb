@@ -128,6 +128,69 @@ pages.each do |path|
   end
 end
 
+# ---------------------------------------------------------------- sequence
+
+# A reader works through the pages in order, so a page may only depend on pages
+# that come before it.
+sequenced = pages.map { |path| [path, YAML.safe_load(File.read(path)[/\A---\s*\n(.*?)\n---/m, 1]) || {}] }
+                 .select { |_, front| front["slug"] }
+
+slugs = {}
+sequenced.each do |path, front|
+  rel = path.sub(ROOT + File::SEPARATOR, "").tr("\\", "/")
+  slug = front["slug"]
+  fail!(failures, rel, "slug #{slug.inspect} is also used by #{slugs[slug]}") if slugs.key?(slug)
+  slugs[slug] = rel
+  fail!(failures, rel, "has a slug but no tier") if front["tier"].to_s.empty?
+  fail!(failures, rel, "has a slug but no order") if front["order"].nil?
+end
+
+by_tier = sequenced.group_by { |_, front| front["tier"] }
+by_tier.each do |tier, group|
+  orders = group.map { |_, front| front["order"] }
+  duplicated = orders.select { |o| orders.count(o) > 1 }.uniq
+  unless duplicated.empty?
+    fail!(failures, "tier #{tier}", "order #{duplicated.join(", ")} used more than once")
+  end
+end
+
+positions = sequenced.to_h { |_, front| [front["slug"], front["order"]] }
+sequenced.each do |path, front|
+  rel = path.sub(ROOT + File::SEPARATOR, "").tr("\\", "/")
+  Array(front["requires"]).each do |req|
+    if req == front["slug"]
+      fail!(failures, rel, "requires itself")
+    elsif !positions.key?(req)
+      fail!(failures, rel, "requires #{req.inspect}, which is not a page")
+    elsif positions[req] >= front["order"]
+      fail!(failures, rel, "requires #{req.inspect}, which comes later in the order")
+    end
+  end
+end
+
+# ---------------------------------------------------------------- languages
+
+# An accordion that covers three languages tells the reader who uses the fourth
+# that the page has nothing for them. Cover all of them or none.
+languages = YAML.safe_load(File.read(File.join(ROOT, "_data", "languages.yml")))
+expected = languages.map { |l| l["name"] }
+
+pages.each do |path|
+  rel = path.sub(ROOT + File::SEPARATOR, "").tr("\\", "/")
+  body = File.read(path)
+  next unless body.include?('<div class="languages"')
+
+  found = body.scan(%r{<summary>(.*?)</summary>}m).flatten.map(&:strip)
+  missing = expected - found
+  extra = found - expected
+
+  fail!(failures, rel, "language accordion is missing: #{missing.join(", ")}") unless missing.empty?
+  fail!(failures, rel, "language accordion has unknown entries: #{extra.join(", ")}") unless extra.empty?
+  if missing.empty? && extra.empty? && found != expected
+    fail!(failures, rel, "language accordion is out of order. Use: #{expected.join(", ")}")
+  end
+end
+
 # ---------------------------------------------------------------- report
 
 if failures.empty?

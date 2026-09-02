@@ -28,9 +28,32 @@
   short: A named piece of code that does one job and can be used again.
   group: Basics
 
+- term: value
+  aliases: [values]
+  short: One piece of information, such as a number, a name or a date.
+  url: /foundations/variables-and-values/
+  group: Basics
+
 - term: variable
   aliases: [variables]
-  short: A named box holding a value that your code can read or change.
+  short: A name your code gives to a value, so a later line can reach it.
+  url: /foundations/variables-and-values/
+  group: Basics
+
+- term: constant
+  aliases: [constants]
+  short: A name whose value never changes after it is set.
+  url: /foundations/variables-and-values/
+  group: Basics
+
+- term: arithmetic
+  short: Adding, subtracting, multiplying or dividing numbers.
+  group: Basics
+
+- term: convert
+  aliases: [converted, converting, conversion]
+  short: Turning a value of one kind into another, such as text into a number.
+  url: /foundations/data-types/
   group: Basics
 
 - term: file
@@ -253,6 +276,21 @@
   short: The live structure of the page in memory. JavaScript changes this, not the original file.
   group: The web
 
+- term: form
+  aliases: [forms]
+  short: The boxes on a page a visitor fills in and sends to your server.
+  group: The web
+
+- term: field
+  aliases: [fields]
+  short: One named piece of information, such as one box on a form or one column in a table.
+  group: The web
+
+- term: display
+  aliases: [displayed, displaying]
+  short: Showing a value to a person, on a screen or in a message. The stored value is not changed.
+  group: The web
+
 # ---------------------------------------------------------------- data
 
 - term: database
@@ -337,7 +375,12 @@
   group: Data
 
 - term: UTC
-  short: One worldwide clock with no daylight saving. Store every moment in it and convert when displaying.
+  short: One worldwide clock, the same everywhere, that never shifts for daylight saving.
+  url: /foundations/data-types/
+  group: Data
+
+- term: daylight saving
+  short: The clock change some countries make twice a year, so one local hour repeats or never happens.
   url: /foundations/data-types/
   group: Data
 

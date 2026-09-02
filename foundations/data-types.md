@@ -2,6 +2,10 @@
 layout: default
 title: Data types
 summary: Every value has a kind. The kind decides what happens next, and picking the wrong one corrupts data quietly.
+tier: Foundations
+slug: data-types
+order: 2
+requires: [variables-and-values]
 ---
 
 A data type is the kind of a value. Text, a whole number, a decimal, true or false, a
@@ -115,6 +119,90 @@ the kinds do not match. This catches a large class of mistakes early.
 It checks nothing while the program runs. Data arriving from a browser, a file or
 another company's service is whatever actually arrived. A declaration that it should
 be a number is a note to you, not a guard. Check the real value when it arrives.
+
+## What this means in your language
+
+Everything above is true everywhere. How much the language helps you varies enormously,
+and the differences decide how much care each rule needs.
+
+<div class="languages" markdown="1">
+
+<details markdown="1">
+<summary>JavaScript and TypeScript</summary>
+
+- **One number type, and it is a decimal.** There is no whole number type. Every
+  number is the kind that cannot hold fractions exactly, so `0.1 + 0.2` is wrong here.
+  Hold money as a whole number of pence and never divide until you display it.
+- **Two kinds of nothing.** `null` means set to nothing. `undefined` means never set.
+  They behave differently and both appear in real data.
+- **Values change kind on their own.** `"5" + 1` joins text. `"5" - 1` does arithmetic.
+  Compare with `===`, which does not convert, rather than `==`, which does.
+- **TypeScript disappears when the program runs.** Its checks are removed before the
+  code executes. A value arriving from a form or another service is whatever actually
+  arrived, so check it with a runtime validator such as Zod.
+- **Dates are weak.** The built-in date is an instant with awkward time zone handling.
+  Use a dedicated library, and store UTC.
+
+</details>
+
+<details markdown="1">
+<summary>Python</summary>
+
+- **Whole numbers are unlimited.** They never overflow, so counting is safe.
+- **`float` is the inexact decimal.** For money use the `Decimal` type from the
+  standard library, or whole pence as an `int`.
+- **One kind of nothing.** `None`, which is simpler than most languages.
+- **Type hints are not enforced.** The program runs whatever it is given. Use Pydantic
+  when data arrives from outside.
+- **Aware and naive datetimes.** A `datetime` with no time zone attached is the classic
+  bug here. Always attach UTC.
+
+</details>
+
+<details markdown="1">
+<summary>C#</summary>
+
+- **`decimal` is genuinely exact for money.** Unlike most languages, C# has a base ten
+  decimal type built for currency. Use `decimal` for money and `double` for
+  measurements. Never the other way round.
+- **Kinds are checked before the program runs**, so many of the mistakes above are
+  caught at compile time.
+- **Nothing has a warning system.** Nullable reference types make the compiler tell you
+  where a value might be missing. Switch them on.
+- **`DateTimeOffset`, not `DateTime`.** A plain `DateTime` can forget which zone it
+  belongs to. `DateTimeOffset` carries it.
+
+</details>
+
+<details markdown="1">
+<summary>Java</summary>
+
+- **`BigDecimal` for money.** `double` and `float` are the inexact kinds. Whole pence
+  in a `long` also works and is faster.
+- **Whole numbers do overflow.** An `int` stops at about 2.1 billion and wraps around
+  to a negative number with no error. Use `long` for anything that counts upward.
+- **`null` and the exception it causes** are the most common failure. `Optional` makes
+  a missing value visible in the signature.
+- **Use `java.time`.** The older `Date` and `Calendar` classes are error prone. `Instant`
+  and `ZonedDateTime` replace them.
+
+</details>
+
+<details markdown="1">
+<summary>PHP</summary>
+
+- **Values convert themselves aggressively.** Comparison with `==` converts before
+  comparing and produces surprising results. Always use `===`.
+- **Turn on strict types.** `declare(strict_types=1)` at the top of each file stops
+  silent conversion at function boundaries.
+- **No exact decimal type.** Use whole pence in an integer, or the BCMath extension.
+  Never a plain float for money.
+- **`DateTimeImmutable`, not `DateTime`.** The mutable one is changed by the code you
+  pass it to, which causes bugs far from the cause.
+
+</details>
+
+</div>
 
 ## What you decide
 

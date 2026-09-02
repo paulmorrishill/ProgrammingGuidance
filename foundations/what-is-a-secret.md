@@ -4,7 +4,7 @@ title: What is a secret
 summary: Any value where holding it is the same as being you.
 tier: Foundations
 slug: what-is-a-secret
-order: 6
+order: 7
 requires: [what-is-git, client-and-server]
 ---
 

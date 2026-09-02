@@ -4,7 +4,7 @@ title: Data types
 summary: Every value has a kind. The kind decides what happens next, and picking the wrong one corrupts data quietly.
 tier: Foundations
 slug: data-types
-order: 2
+order: 3
 requires: [variables-and-values]
 ---
 

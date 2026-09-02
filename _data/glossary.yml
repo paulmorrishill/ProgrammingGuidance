@@ -741,3 +741,60 @@
   aliases: [slop]
   short: Text an AI produced in bulk that nobody checked, filling space without teaching anything.
   group: Working with AI
+
+- term: LLM
+  aliases: [large language model, AI]
+  short: A program that predicts likely text. It writes code by continuing the words it has seen.
+  url: /foundations/how-your-ai-fails/
+  group: Working with AI
+
+- term: sycophancy
+  aliases: [sycophantic]
+  short: An AI agreeing with the person asking rather than saying what is true.
+  url: /foundations/how-your-ai-fails/
+  group: Working with AI
+
+- term: hallucination
+  aliases: [hallucinate, hallucinated, hallucinations]
+  short: An AI stating something false in a well formed way, such as naming a function that does not exist.
+  url: /foundations/how-your-ai-fails/
+  group: Working with AI
+
+- term: context window
+  short: The text an AI can consider at once. Anything outside it does not exist for the AI.
+  url: /foundations/how-your-ai-fails/
+  group: Working with AI
+
+- term: training cutoff
+  short: The date after which an AI learned nothing. It does not know later releases or advisories.
+  url: /foundations/how-your-ai-fails/
+  group: Working with AI
+
+- term: leading question
+  aliases: [leading questions]
+  short: A question carrying its own answer. The reply agrees with the assumption you put in it.
+  url: /foundations/how-your-ai-fails/
+  group: Working with AI
+
+- term: refactor
+  aliases: [refactoring, refactored]
+  short: Changing the shape of code without changing what it does.
+  group: Working with code
+
+- term: architecture
+  short: The overall shape of a system, and the decisions that are expensive to reverse.
+  group: Working with code
+
+- term: diff
+  aliases: [diffs]
+  short: The list of lines a change adds, removes and alters.
+  group: Working with code
+
+- term: assertion
+  aliases: [assertions, assert]
+  short: The line in a test that states what must be true. Deleting it makes the test pass.
+  group: Working with code
+
+- term: supply chain attack
+  short: An attack that reaches you through code you installed, rather than through your own code.
+  group: Security and access

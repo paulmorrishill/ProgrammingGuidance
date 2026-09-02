@@ -4,7 +4,7 @@ title: Ids
 summary: How your app names each record, where those names travel, and what they give away.
 tier: Foundations
 slug: ids
-order: 5
+order: 6
 requires: [data-types, client-and-server]
 ---
 

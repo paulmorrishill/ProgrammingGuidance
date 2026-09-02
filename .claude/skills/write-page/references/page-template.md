@@ -20,6 +20,9 @@ before it.>
 <One sentence on what the AI does here and what it cannot decide. This is why the
 page exists.>
 
+<Optional. Include a rules block only where a wrong move loses data, leaks a secret,
+costs money, or cannot be undone. Delete this block on a page that has no such move.>
+
 {: .rules}
 - **NEVER** <the irreversible thing>.
 - **ALWAYS** <the thing skipping which causes harm>.

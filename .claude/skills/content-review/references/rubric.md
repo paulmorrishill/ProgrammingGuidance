@@ -116,6 +116,10 @@ Flag:
 The block sits directly under the definition. Flag:
 
 - No rules block on a page that has non-negotiables.
+- A rules block on a page that has none. Not every page needs one, and a padded block
+  teaches the reader to skip the block on pages where it matters. Judge each rule: does
+  breaking it lose data, leak a secret, cost money, or resist undoing? If not, it is
+  padding, and say so.
 - More than 5 rules, or a rule that is not NEVER or ALWAYS.
 - A NEVER used for a style preference rather than data loss, a security breach, money
   or an irreversible action.
@@ -191,3 +195,23 @@ AI cannot decide.*
 
 Flag a page that explains a concept but never says what the reader must decide, or
 which failures they own. This is the difference between this site and documentation.
+
+## 12. Contradictions and advice that cannot be followed
+
+*Origin: the page said a question carrying your assumption is dangerous, then its own
+rule said "ask what breaks", which carries the assumption that something breaks.*
+
+Read the page as one argument and check it against itself.
+
+Flag:
+
+- A rule that contradicts the body, or a section that contradicts another section.
+- Advice that breaks the page's own stated principle. This is the most common form and
+  the hardest to see, because both halves read well on their own.
+- Two claims that cannot both be true.
+- Circular advice, where the instruction assumes the knowledge it is meant to give.
+- An instruction with no way to act on it, such as "consider the trade-offs".
+- A "what to do" that does not follow from the failure just described.
+- A cross-page contradiction, where two pages give opposite advice on one point.
+
+For each, quote both halves, say which one is wrong, and give the replacement.

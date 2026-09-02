@@ -4,7 +4,7 @@ title: Variables and values
 summary: A value is one piece of information. A variable is the name your code uses to reach it.
 tier: Foundations
 slug: variables-and-values
-order: 1
+order: 2
 requires: []
 ---
 
@@ -15,9 +15,7 @@ the computer fetches whatever is stored under that label. Almost everything a pr
 does is reading values, changing them, and putting them somewhere.
 
 {: .rules}
-- **NEVER** use one name for two different meanings.
 - **NEVER** assume two names hold two separate copies of a value.
-- **ALWAYS** name a value for what it means, not for what kind it is.
 - **ALWAYS** know where a value came from before you trust it.
 
 ## The problem

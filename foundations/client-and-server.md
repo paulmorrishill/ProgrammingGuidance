@@ -4,7 +4,7 @@ title: Client and server
 summary: One line divides code you control from code you do not. Almost every security mistake crosses it.
 tier: Foundations
 slug: client-and-server
-order: 4
+order: 5
 requires: []
 ---
 

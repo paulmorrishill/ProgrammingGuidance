@@ -156,6 +156,13 @@ wrong answer costs them money, data or a security breach, keep it.
 A rules block holds the non-negotiable statements for a page. It sits directly under
 the definition, before the body. The reader who reads nothing else reads this.
 
+**Most pages do not need one.** The block exists for pages where a wrong move loses
+data, leaks a secret, costs money, or cannot be undone. A page that teaches a concept
+with no such move has no rules, and adding some to fill the space teaches the reader
+to skip the block on the pages that need it.
+
+Two genuine rules beat five padded ones. No rules at all beats two invented ones.
+
 Write it as a markdown list with the class applied by a kramdown attribute:
 
 ```markdown
@@ -181,6 +188,8 @@ teaches the reader to ignore both.
 ### Limits
 
 - Maximum 5 rules in the block at the top of a page. Six rules teach none.
+- Every rule names an action with a consequence. "Think about performance" is not a
+  rule, because there is nothing to obey. Neither is a naming convention.
 - Only NEVER and ALWAYS go at the top. DO and DON'T belong in the section they concern.
 - One sentence per rule. Maximum 15 words. Imperative.
 - Reserve NEVER for data loss, a security breach, money, or an irreversible action.
@@ -234,7 +243,7 @@ Every topic page uses this order:
 
 1. **Title** — a question or a noun. Example: "What is Git".
 2. **Definition** — 1 or 2 sentences. The first line on the page.
-3. **Rules** — the non-negotiables. See Rules blocks below. Maximum 5.
+3. **Rules** — only where a wrong move is irreversible. See Rules blocks. Maximum 5.
 4. **The problem** — the concrete failure this thing prevents.
 5. **Mental model** — one picture the reader can hold.
 6. **The parts** — named concepts, one short block each.

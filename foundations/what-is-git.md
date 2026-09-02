@@ -4,7 +4,7 @@ title: What is Git
 summary: The history of your project, and the four decisions only you can make about it.
 tier: Foundations
 slug: what-is-git
-order: 3
+order: 4
 requires: []
 ---
 

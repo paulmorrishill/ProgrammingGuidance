@@ -1,0 +1,96 @@
+# One definition per term, used by the tooltips and by /glossary/.
+# short: one sentence, 20 words or fewer.
+# url:   the page that teaches the term. Omit it when only the glossary defines it.
+
+- term: repository
+  aliases: [repositories, repo, repos]
+  short: A project folder plus the hidden .git folder holding its complete history.
+  url: /foundations/what-is-git/
+
+- term: commit
+  aliases: [commits, committed, committing]
+  short: One saved checkpoint, holding a snapshot of every tracked file and a link to the commit before it.
+  url: /foundations/what-is-git/
+
+- term: branch
+  aliases: [branches]
+  short: A movable label that points at one commit.
+  url: /foundations/what-is-git/
+
+- term: remote
+  aliases: [remotes]
+  short: A copy of a repository on another machine, usually GitHub.
+  url: /foundations/what-is-git/
+
+- term: force push
+  aliases: [force pushing, force pushed, force pushes]
+  short: A push that replaces the remote history with yours, deleting commits other people pushed.
+  url: /foundations/what-is-git/
+
+- term: merge conflict
+  aliases: [merge conflicts]
+  short: Git stopping because two commits changed the same lines, and only you can choose between them.
+  url: /foundations/what-is-git/
+
+- term: secret
+  aliases: [secrets]
+  short: A value that grants access or proves identity. Holding it is the same as being you.
+  url: /foundations/what-is-a-secret/
+
+- term: API key
+  aliases: [API keys]
+  short: A token that acts as your account on another company's service. Its usage is billed to you.
+  url: /foundations/what-is-a-secret/
+
+- term: signing key
+  aliases: [signing keys, session secret, JWT secret]
+  short: A secret that lets its holder create valid logins, without any failed attempt being recorded.
+  url: /foundations/what-is-a-secret/
+
+- term: rotate
+  aliases: [rotating, rotated, rotation]
+  short: Replace a secret with a new one and disable the old one. The only real fix after a leak.
+  url: /foundations/what-is-a-secret/
+
+- term: client
+  aliases: [clients, front end, frontend]
+  short: Your code running on someone else's machine, usually a browser. You control none of it.
+  url: /foundations/client-and-server/
+
+- term: server
+  aliases: [servers, back end, backend]
+  short: Your code running on a machine you control. The only place a rule can be enforced.
+  url: /foundations/client-and-server/
+
+- term: authentication
+  aliases: [authenticate, authenticated]
+  short: Checking who someone is.
+  url: /foundations/client-and-server/
+
+- term: authorization
+  aliases: [authorize, authorized, permission check]
+  short: Checking what someone is allowed to do. Passing authentication grants nothing here.
+  url: /foundations/client-and-server/
+
+- term: validation
+  aliases: [validate, validated]
+  short: Checking that data is well formed and permitted before your code acts on it.
+  url: /foundations/client-and-server/
+
+- term: Row Level Security
+  aliases: [RLS]
+  short: Database rules deciding which rows each user may read or change. Off until you enable it.
+
+- term: CORS
+  short: A browser rule limiting which websites may call your API from a visitor's browser. It does not protect the API itself.
+
+- term: environment variable
+  aliases: [environment variables]
+  short: A value given to a program by its surroundings rather than written in its code.
+
+- term: session
+  aliases: [sessions]
+  short: The server's own record of who a signed-in user is, kept across requests.
+
+- term: least privilege
+  short: Granting the smallest permission that still works, so one leak costs less.

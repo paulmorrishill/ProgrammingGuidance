@@ -50,6 +50,39 @@ Choose one word for one thing. Repeat it. Do not rotate synonyms.
 
 Define a glossary term once. Then reuse the exact term.
 
+## Glossary terms
+
+Every load-bearing term is defined once, in `_data/glossary.yml`. Nothing else
+defines it.
+
+The site links the first mention of each term on a page, shows the definition on
+hover, and sends a click to the page that teaches it. Authors write plain prose and
+mark nothing.
+
+### Adding a term
+
+```yaml
+- term: force push
+  aliases: [force pushing, force pushed]
+  short: A push that replaces the remote history with yours, deleting commits other people pushed.
+  url: /foundations/what-is-git/
+```
+
+- `short` is one sentence, 20 words or fewer. It is a definition, not a warning.
+- `url` names the page that teaches the term. Omit it when no page does, and the
+  term links to the glossary entry instead.
+- List every form a writer will type in `aliases`, including the plural.
+
+### Rules
+
+- A term earns an entry when a reader who misreads it makes a costly mistake.
+  Ordinary English words do not qualify.
+- Never rely on the tooltip to carry a fact. A page defines its own terms in the
+  prose, exactly as it would with no tooltips at all.
+- The definition in the glossary and the definition on the page agree. When they
+  drift, the glossary is wrong.
+- A term is never linked on the page that teaches it. That page is the definition.
+
 ## Concise
 
 Cut words until the next cut loses meaning. Then stop.
@@ -206,7 +239,7 @@ reader's level. Respect the reader by not wasting their time.
 - [ ] Every sentence is 25 words or fewer
 - [ ] No semicolons
 - [ ] Active voice throughout
-- [ ] Every term defined on first use
+- [ ] Every term defined on first use, in the prose and not only in the glossary
 - [ ] No filler words from the list above
 - [ ] One name per concept
 - [ ] Code blocks tagged, and none of them is a procedure to copy

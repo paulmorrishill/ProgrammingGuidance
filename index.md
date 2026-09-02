@@ -16,6 +16,7 @@ The ideas under the tools you already use.
 
 - [What is Git]({{ '/foundations/what-is-git' | relative_url }})
 - [What is a secret]({{ '/foundations/what-is-a-secret' | relative_url }})
+- [Client and server]({{ '/foundations/client-and-server' | relative_url }})
 
 ## Building
 
@@ -30,5 +31,8 @@ Secrets, authorization, money, cost limits, operations and the law.
 Coming soon.
 
 ---
+
+Every load-bearing term is defined once in the [glossary]({{ '/glossary' | relative_url }}).
+Hover any dotted term on a page to see its definition.
 
 Pages follow the [writing style guide](https://github.com/paulmorrishill/ProgrammingGuidance/blob/master/STYLE.md).

@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{% if page.title %}{{ page.title }} — {% endif %}{{ site.title }}</title>
-<meta name="description" content="{{ page.description | default: site.description }}">
+<meta name="description" content="{{ page.description | default: page.summary | default: site.description }}">
 <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
 <body>
 <header>
   <a class="home" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+  <a class="nav" href="{{ '/glossary' | relative_url }}">Glossary</a>
 </header>
 
 <main>
@@ -22,39 +23,9 @@
   <a href="https://github.com/paulmorrishill/ProgrammingGuidance">Source on GitHub</a>
 </footer>
 
-<script type="module">
-import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-
-// Rouge wraps fenced blocks differently depending on the highlighter path,
-// so match the language class wherever it lands and replace the whole block.
-document.querySelectorAll('.language-mermaid').forEach((el) => {
-  const codeEl = el.matches('code') ? el : el.querySelector('code');
-  const source = (codeEl || el).textContent;
-  const block = el.closest('div.highlighter-rouge') || el.closest('pre') || el;
-  const figure = document.createElement('div');
-  figure.className = 'mermaid';
-  figure.textContent = source;
-  block.replaceWith(figure);
-});
-
-// A rules list is authored as plain markdown so it stays readable on GitHub.
-// Tag each item by its leading keyword so the site can style prohibition
-// differently from requirement.
-document.querySelectorAll('ul.rules > li').forEach((li) => {
-  const keyword = li.querySelector('strong');
-  if (!keyword) return;
-  const word = keyword.textContent.trim().toUpperCase().replace(/[^A-Z']/g, '');
-  const stop = word === 'NEVER' || word === "DON'T" || word === 'DONT';
-  li.classList.add('rule', stop ? 'rule-stop' : 'rule-go');
-});
-
-const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-mermaid.initialize({
-  startOnLoad: true,
-  securityLevel: 'strict',
-  theme: dark ? 'dark' : 'default',
-  themeVariables: { fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif' },
-});
-</script>
+<script id="site-config" type="application/json">{"baseurl": {{ site.baseurl | default: "" | jsonify }}}</script>
+<script id="glossary-data" type="application/json">{{ site.data.glossary | jsonify }}</script>
+<div id="term-tip" role="tooltip" hidden></div>
+<script type="module" src="{{ '/assets/site.js' | relative_url }}"></script>
 </body>
 </html>

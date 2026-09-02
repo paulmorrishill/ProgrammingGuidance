@@ -128,5 +128,5 @@ You cannot prevent every leak. You can decide how much one leak costs.
 ## Next
 
 - [What is Git]({{ '/foundations/what-is-git' | relative_url }}) — why deleting a committed secret does nothing
-- Client and server — which side of the line a secret may cross
+- [Client and server]({{ '/foundations/client-and-server' | relative_url }}) — which side of the line a secret may cross
 - Environment variables and configuration

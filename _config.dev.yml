@@ -1,0 +1,3 @@
+# Local preview only. Serves at http://localhost:4000/ with no path prefix.
+baseurl: ""
+url: "http://localhost:4000"

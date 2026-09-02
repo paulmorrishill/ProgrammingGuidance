@@ -18,3 +18,18 @@ Read [STYLE.md](STYLE.md) before adding a page. Two rules matter most:
 
 Jekyll on GitHub Pages. Markdown in, HTML out, no local tooling needed. Diagrams are
 Mermaid inside fenced `mermaid` blocks, rendered in the browser.
+
+## Local preview
+
+Ruby 3.4 and Bundler are required.
+
+```bash
+bundle install
+bundle exec jekyll serve --livereload --config _config.yml,_config.dev.yml
+```
+
+The site then runs at <http://localhost:4000>. `_config.dev.yml` clears the path
+prefix so links work without the `/ProgrammingGuidance` segment.
+
+GitHub Pages builds through `.github/workflows/pages.yml` with the same Jekyll
+version, so local output matches the published site.

@@ -33,6 +33,12 @@ Two gates, both run in CI. A failure in either blocks the deploy.
   Repeating one in a page fails the build. The check also enforces the 20-word limit
   on definitions, the ban on semicolons, and the shape of a rules block.
 
+## Writing a page
+
+Use the `write-page` skill in `.claude/skills/`. It establishes the prerequisites
+first and stops when one has no page yet, verifies language claims with one subagent
+each, then drafts to the shape in `references/page-template.md`.
+
 ## Reviewing content
 
 The automated gates cannot judge whether a page assumes too much. That review lives in

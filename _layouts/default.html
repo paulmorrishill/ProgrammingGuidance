@@ -37,6 +37,17 @@ document.querySelectorAll('.language-mermaid').forEach((el) => {
   block.replaceWith(figure);
 });
 
+// A rules list is authored as plain markdown so it stays readable on GitHub.
+// Tag each item by its leading keyword so the site can style prohibition
+// differently from requirement.
+document.querySelectorAll('ul.rules > li').forEach((li) => {
+  const keyword = li.querySelector('strong');
+  if (!keyword) return;
+  const word = keyword.textContent.trim().toUpperCase().replace(/[^A-Z']/g, '');
+  const stop = word === 'NEVER' || word === "DON'T" || word === 'DONT';
+  li.classList.add('rule', stop ? 'rule-stop' : 'rule-go');
+});
+
 const dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 mermaid.initialize({
   startOnLoad: true,

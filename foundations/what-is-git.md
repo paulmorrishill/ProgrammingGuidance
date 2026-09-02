@@ -10,6 +10,13 @@ tracked file, so you can return to any earlier point.
 Your AI runs the commands. You need the model underneath them, because Git is the
 one tool that decides whether a mistake costs you five seconds or a week.
 
+{: .rules}
+- **NEVER** commit a secret. Environment files, API keys, tokens, certificates.
+- **NEVER** commit a database file, user uploads, or anything you cannot recreate.
+- **NEVER** force push a branch other people use.
+- **ALWAYS** treat a committed secret as public, and replace it.
+- **ALWAYS** write a `.gitignore` before the first commit.
+
 ## The problem
 
 Without Git you meet these four failures:
@@ -110,15 +117,37 @@ know which of two working versions you meant to keep.
 
 ## What must never enter the history
 
-A secret committed once stays in the history forever. A later commit that deletes the
-file does not remove it. Anyone who clones the repository reads it.
+Git keeps everything. That is the point of it, and it is also the trap.
 
-If a key reaches a commit, treat the key as public and replace it. Deleting the file
-is not enough.
+**Secrets.** A key committed once stays in the history forever. A later commit that
+deletes the file does not remove it. Anyone who clones the repository reads it, and
+the history is copied to every machine that ever cloned it. Deleting the file is not
+enough. Replace the key.
 
-Keep these out: environment files holding secrets, installed dependency folders,
-generated build output, and operating system junk files. The `.gitignore` file lists
-what Git must not track.
+**Data you cannot recreate.** A database file, user uploads, or customer exports.
+Two problems follow. The repository grows and never shrinks, because every version of
+every large file is kept forever. Worse, private data now sits on every clone, and
+you cannot recall it.
+
+**Generated output.** Dependency folders and build output are not harmful, only
+wasteful. Your machine recreates them. Committing them makes every change hard to read.
+
+The `.gitignore` file lists what Git must not track. Write it before the first
+commit, because a rule added later does nothing about what the history already holds.
+
+## The one action Git cannot undo
+
+Git protects you from almost every mistake. A commit you abandoned is still
+recoverable weeks later. A file you deleted returns.
+
+Two things escape that protection:
+
+- **Work you never committed.** Git has no record of it. Nothing to recover.
+- **History you rewrote and pushed to a shared branch.** A force push replaces the
+  remote history with yours. Commits other people pushed disappear from it, and their
+  next attempt to sync reports a conflict they did not cause.
+
+Everything else is a bad afternoon. These two are lost work.
 
 ## What you decide
 

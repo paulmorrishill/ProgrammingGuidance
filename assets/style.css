@@ -6,6 +6,10 @@
   --accent: #2f6feb;
   --border: #e4e4e7;
   --code-bg: #f6f7f9;
+  --stop: #b42318;
+  --stop-bg: #fdf3f2;
+  --go: #0d6c3a;
+  --go-bg: #f1f8f3;
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -15,6 +19,10 @@
     --accent: #6ea8fe;
     --border: #2a2e35;
     --code-bg: #171a20;
+    --stop: #ff9d92;
+    --stop-bg: #2a1614;
+    --go: #78dfa4;
+    --go-bg: #10231a;
   }
 }
 
@@ -89,4 +97,38 @@ footer {
   border-top: 1px solid var(--border);
   font-size: .875rem;
   color: var(--muted);
+}
+
+/* Rules block. The keyword itself carries the meaning, so the block still
+   reads correctly with no colour at all. */
+ul.rules {
+  list-style: none;
+  margin: 2rem 0 2.5rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+ul.rules > li {
+  margin: 0;
+  padding: .7rem 1rem;
+  border-left: 4px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--code-bg);
+}
+ul.rules > li:last-child { border-bottom: none; }
+ul.rules > li strong {
+  display: inline-block;
+  min-width: 4.5rem;
+  font-size: .75rem;
+  letter-spacing: .09em;
+  font-weight: 700;
+}
+ul.rules > li.rule-stop { border-left-color: var(--stop); background: var(--stop-bg); }
+ul.rules > li.rule-stop strong { color: var(--stop); }
+ul.rules > li.rule-go { border-left-color: var(--go); background: var(--go-bg); }
+ul.rules > li.rule-go strong { color: var(--go); }
+
+@media (max-width: 30rem) {
+  ul.rules > li strong { display: block; min-width: 0; margin-bottom: .15rem; }
 }

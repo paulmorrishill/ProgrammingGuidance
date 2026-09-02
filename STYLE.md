@@ -97,18 +97,56 @@ the concept. The full syntax is not.
 **Test:** if the reader reaches the same result by asking their AI, cut it. If a
 wrong answer costs them money, data or a security breach, keep it.
 
+## Rules blocks
+
+A rules block holds the non-negotiable statements for a page. It sits directly under
+the definition, before the body. The reader who reads nothing else reads this.
+
+Write it as a markdown list with the class applied by a kramdown attribute:
+
+```markdown
+{: .rules}
+- **NEVER** commit a secret. Environment files, API keys, tokens, certificates.
+- **ALWAYS** treat a committed secret as public and replace it.
+```
+
+The list renders as plain markdown in the GitHub repository view. The site styles it.
+
+### The four words
+
+| Word | Meaning | Exceptions |
+|---|---|---|
+| **NEVER** | The action causes irreversible harm | None |
+| **ALWAYS** | Skipping the action causes harm eventually | None |
+| **DON'T** | A common mistake with a better alternative | Yes, and you must know why |
+| **DO** | The recommended default | Yes, and you must know why |
+
+NEVER and ALWAYS remove judgment. DO and DON'T guide it. Choosing the wrong pair
+teaches the reader to ignore both.
+
+### Limits
+
+- Maximum 5 rules in the block at the top of a page. Six rules teach none.
+- Only NEVER and ALWAYS go at the top. DO and DON'T belong in the section they concern.
+- One sentence per rule. Maximum 15 words. Imperative.
+- Reserve NEVER for data loss, a security breach, money, or an irreversible action.
+  Never use it for a style preference.
+- Every NEVER names its consequence somewhere on the page.
+- The body explains why. The rule does not repeat the explanation.
+
 ## Page shape
 
 Every topic page uses this order:
 
 1. **Title** — a question or a noun. Example: "What is Git".
 2. **Definition** — 1 or 2 sentences. The first line on the page.
-3. **The problem** — the concrete failure this thing prevents.
-4. **Mental model** — one picture the reader can hold.
-5. **The parts** — named concepts, one short block each.
-6. **What you decide** — the judgment the AI cannot make for you.
-7. **Common mistakes** — real failures, not theory.
-8. **Next** — 2 or 3 links.
+3. **Rules** — the non-negotiables. See Rules blocks below. Maximum 5.
+4. **The problem** — the concrete failure this thing prevents.
+5. **Mental model** — one picture the reader can hold.
+6. **The parts** — named concepts, one short block each.
+7. **What you decide** — the judgment the AI cannot make for you.
+8. **Common mistakes** — real failures, not theory.
+9. **Next** — 2 or 3 links.
 
 Skip a section when it has nothing to say. Do not pad it.
 
@@ -174,4 +212,6 @@ reader's level. Respect the reader by not wasting their time.
 - [ ] Code blocks tagged, and none of them is a procedure to copy
 - [ ] No command list or step-by-step the AI would perform
 - [ ] Every diagram has a caption and 7 nodes or fewer
+- [ ] The rules block holds 5 rules or fewer, all NEVER or ALWAYS
+- [ ] Every NEVER names its consequence in the body
 - [ ] The page opens with the definition, not a preamble

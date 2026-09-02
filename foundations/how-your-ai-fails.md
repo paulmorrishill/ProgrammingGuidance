@@ -73,6 +73,37 @@ already running, the rule that rows in this table are never changed once written
 a cache, and without changing the response shape" is a different request from "make
 this faster".
 
+## Telling it not to do something barely works
+
+A prohibition is a weak instruction. One audit across 16 models found open-weight
+models carrying out specifically forbidden actions 77% of the time when told plainly
+not to. When the prohibition carried a condition, such as "do not do this if it leads
+to that", they carried it out every time.
+
+Separate work on how models handle negation locates the cause. The parts that read the
+negation work correctly. Later layers apply a shortcut favouring the positive reading,
+and the shortcut wins. So "never use a floating point number for money" puts floating
+point numbers in front of the model, and the word most likely to be dropped is
+"never".
+
+Padding has its own cause. Models are tuned on human ratings, raters prefer longer
+answers, and length therefore gets learned as a mark of quality. Filler returns
+whenever nothing pushes against it, whatever your instructions said.
+
+**What to do.** Name the action you want, in a form you can check. "Store money as
+whole pence" works better than "never use floats for money", because the first names
+what to do and the second only names the mistake. Work comparing instructions with
+examples for controlling style found specific, testable directives held across a
+conversation, while examples alone produced weaker copying of surface form.
+
+Where the same instruction matters repeatedly, check the output automatically instead
+of repeating the instruction. A rule a script enforces does not decay over a long
+conversation. A rule in a prompt does.
+
+This applies to instructions you give the model. A rule you follow yourself, such as
+the ones at the top of this page, is a different thing, because you can read a
+prohibition and act on it.
+
 ## It patches instead of reviewing
 
 Ask for a change and you get the smallest edit that satisfies the request. Do that
@@ -269,6 +300,7 @@ feeling of speed is not a measurement of speed.
 - **Asking whether your plan is good.** You will be told it is.
 - **Naming your suspected cause in the question.** The answer will agree with you.
 - **Demanding a list of problems.** You get a list, invented if there were none.
+- **Writing a standard as a prohibition.** Name the action you want instead.
 - **Accepting a change you cannot explain.** You now maintain code nobody understands.
 - **Letting forty small changes decide your architecture.** Nobody chose the result.
 - **Reading a diff for what was added.** The damage is usually in what was removed.
@@ -285,6 +317,10 @@ feeling of speed is not a measurement of speed.
 - Package hallucination rates and their repeatability: [Importing Phantoms: Measuring LLM Package Hallucination Vulnerabilities](https://arxiv.org/pdf/2501.19012).
 - The 19% slowdown and the 20% belief: [Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity](https://arxiv.org/abs/2507.09089), METR, July 2025.
 - Security and misplaced confidence: [Do Users Write More Insecure Code with AI Assistants?](https://arxiv.org/abs/2211.03622), Perry et al., ACM CCS 2023.
+- Forbidden actions carried out anyway: [When Prohibitions Become Permissions: Auditing Negation Sensitivity in Language Models](https://arxiv.org/html/2601.21433).
+- Why negation gets dropped: [How Language Models Process Negation](https://arxiv.org/html/2605.03052v1).
+- Length learned as quality: [Bias Fitting to Mitigate Length Bias of Reward Model in RLHF](https://arxiv.org/abs/2505.12843).
+- Directives against examples: [Show and Tell: Prompt Strategies for Style Control in Multi-Turn LLM Code Generation](https://arxiv.org/pdf/2511.13972).
 
 ## Next
 

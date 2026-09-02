@@ -154,3 +154,4 @@ and to say so before your AI does the fast version.
 
 - [Data types]({{ '/foundations/data-types' | relative_url }}) — the choices that become permanent once data exists
 - [How your AI fails]({{ '/foundations/how-your-ai-fails' | relative_url }}) — the behaviours that produce this debt
+- [Personal data]({{ '/foundations/personal-data' | relative_url }}) — the debt that carries a legal deadline

@@ -517,7 +517,8 @@
 
 - term: personal data
   aliases: [PII, personally identifiable information]
-  short: Anything identifying a real person, such as a name, email address or location. The law treats it seriously.
+  short: Any information about a living person who can be identified from it, alone or with data you hold.
+  url: /foundations/personal-data/
   group: Security and access
 
 - term: SQL injection
@@ -820,3 +821,99 @@
   short: A failure the program hides, so it continues with a wrong value and reports nothing.
   url: /foundations/technical-debt/
   group: Running and watching
+
+- term: UK GDPR
+  short: The UK's data protection law, kept from the European regulation of 2016 and changed since.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: ICO
+  aliases: [Information Commissioner's Office]
+  short: The UK regulator for data protection. It receives breach reports and can issue fines.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: PECR
+  aliases: [Privacy and Electronic Communications Regulations]
+  short: The UK rules for cookies and marketing messages. They apply even when no personal data is involved.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: personal data breach
+  aliases: [personal data breaches, data breach, data breaches]
+  short: Any loss, destruction, change or unauthorised access involving personal data.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: pseudonymised
+  aliases: [pseudonymisation, pseudonymised data, pseudonymise]
+  short: Personal data with the identifying values replaced, where somebody still holds what reverses the replacement.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: anonymised
+  aliases: [anonymisation, anonymous data, anonymise]
+  short: Changed so that no realistic effort can trace the data back to a person.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: special category data
+  short: The nine kinds of personal data the law guards more strictly, such as health and religion.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: data minimisation
+  short: Collecting and keeping only the data your purpose needs, and nothing else.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: retention period
+  aliases: [retention periods, data retention]
+  short: How long you keep one kind of data before you delete or anonymise it.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: subject access request
+  aliases: [subject access requests, DSAR, SAR]
+  short: A person asking for a copy of the personal data you hold about them.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: data controller
+  aliases: [data controllers]
+  short: The company that decides why and how personal data is used. The duties fall on it.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: data processor
+  aliases: [data processors]
+  short: A company that uses personal data only as another company instructs.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: data processing agreement
+  aliases: [data processing addendum]
+  short: The contract that lets another company use personal data for you, setting what it may do.
+  url: /foundations/personal-data/
+  group: Security and access
+
+- term: IP address
+  aliases: [IP addresses]
+  short: The number identifying a machine on the internet. Your server sees it on every request.
+  group: The web
+
+- term: prompt
+  aliases: [prompts]
+  short: The text you send to an AI, including everything your code adds to it.
+  group: Working with AI
+
+- term: replica
+  aliases: [replicas]
+  short: A second copy of a database, kept in step with the first.
+  group: Data
+
+- term: soft delete
+  aliases: [soft deletes, soft deleted]
+  short: Marking a row as deleted and leaving it in place.
+  url: /foundations/personal-data/
+  group: Data
